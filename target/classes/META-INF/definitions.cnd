@@ -1,0 +1,25 @@
+<busdirmix = 'http://www.businessdirectory.org/busdirmix'>
+<busdirnt = 'http://www.businessdirectory.org/busdirnt'>
+<jmix = 'http://www.jahia.org/jahia/mix/1.0'>
+<jnt = 'http://www.jahia.org/jahia/nt/1.0'>
+<mix = 'http://www.jcp.org/jcr/mix/1.0'>
+
+[busdirmix:busdircomponents] > jmix:droppableContent mixin
+
+[busdirnt:team] > jnt:content, busdirmix:busdircomponents, mix:title
+ - jcr:title (string) mandatory
+ - manager (weakreference, choicelist[nodes='$currentSite//*;busdirnt:employee']) < 'busdirnt:employee'
+ + * (busdirnt:team)
+ + * (busdirnt:employee)
+
+[busdirnt:employee] > jnt:content, busdirmix:busdircomponents, mix:title
+ - jcr:title (string) mandatory
+ - firstName (string) mandatory
+ - lastName (string) mandatory
+ - location (string, choicelist[resourceBundle]) < 'Geneva', 'Paris', 'Toronto', 'Klagenfurt', 'Dusseldorf', 'Washington D.C.', 'Houston', 'Other'
+ - email (string) < '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}'
+ - fixPhoneNumber (string)
+ - mobilePhoneNumber (string)
+ - skypeID (string)
+ - photo (weakreference, picker[type='image'])
+
