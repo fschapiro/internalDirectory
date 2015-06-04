@@ -11,14 +11,22 @@
 <%@ taglib prefix="s" uri="http://www.jahia.org/tags/search" %>
 
 
-<c:set var="teamName" value="${currentNode.properties['jcr:title'].string}"/>
+<div id="teamStructure">
+    <ul>
+        <li><template:module node="${currentNode}" view="noFormat" /></li>
+        <ul>
+        <c:forEach items="${currentNode.nodes}" var="nodeOfTeam">
+            <c:if test="${jcr:isNodeType(nodeOfTeam,'busdirnt:employee')}">
+                <li> <template:module node="${nodeOfTeam}" view="default" /></li>
+            </c:if>
+            <c:if test="${jcr:isNodeType(nodeOfTeam,'busdirnt:team')}">
+                <template:module node="${nodeOfTeam}" view="treeView" />
+            </c:if>
+        </c:forEach>
+        </ul>
+    </ul>
+</div>
 
-<c:set var="manager" value="${currentNode.properties['manager'].node}"/>
 
-<c:if test="${not empty manager}">
-  <a href="${currentNode.url}"><h5>${teamName}</a> &nbsp; - &nbsp; <a href="${manager.url}">${manager.properties['firstName'].string} &nbsp; ${manager.properties['lastName'].string}</a></h5>
-</c:if>
 
-<c:if test="${empty manager}">
-  <a href="${currentNode.url}"><h5>${teamName}</h5></a>
-</c:if>
+

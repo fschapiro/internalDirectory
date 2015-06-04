@@ -19,12 +19,14 @@
                               j:hiddenTemplate="false"
                               jcr:primaryType="jnt:contentTemplate">
                         <j:translation_en jcr:language="en"
+                                 jcr:mixinTypes="mix:title"
                                  jcr:primaryType="jnt:translation"
                                  jcr:title="Employee details"/>
                         <pagecontent jcr:primaryType="jnt:contentList">
                             <main-resource-display j:mainResourceView="detail" jcr:primaryType="jnt:mainResourceDisplay"/>
                             <back jcr:primaryType="jnt:backToParentPage">
                                 <j:translation_en jcr:language="en"
+                                       jcr:mixinTypes="mix:title"
                                        jcr:primaryType="jnt:translation"
                                        jcr:title="Back"/>
                             </back>
@@ -35,12 +37,14 @@
                           j:hiddenTemplate="false"
                           jcr:primaryType="jnt:contentTemplate">
                         <j:translation_en jcr:language="en"
+                                 jcr:mixinTypes="mix:title"
                                  jcr:primaryType="jnt:translation"
                                  jcr:title="Team details"/>
                         <pagecontent jcr:primaryType="jnt:contentList">
                             <main-resource-display j:mainResourceView="detail" jcr:primaryType="jnt:mainResourceDisplay"/>
                             <back jcr:primaryType="jnt:backToParentPage">
                                 <j:translation_en jcr:language="en"
+                                       jcr:mixinTypes="mix:title"
                                        jcr:primaryType="jnt:translation"
                                        jcr:title="Back"/>
                             </back>

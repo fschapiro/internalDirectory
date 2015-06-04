@@ -53,3 +53,12 @@
 <c:if test="${not empty skypeID}">
     <p><fmt:message key="busdirnt_employee.skypeID"/>:${currentNode.properties['skypeID'].string}</p>
 </c:if>
+
+<c:set var="team" value="${currentNode.parent}"/>
+<c:if test="${not empty team}">
+    <fmt:message key="busdirnt_employee.team"/>:<template:module node="${team}" view="default"/>
+</c:if>
+<c:if test="${empty team}">
+    <fmt:message key="busdirnt_employee.team"/>:<fmt:message key="busdirnt.noTeam"/>
+</c:if>
+
