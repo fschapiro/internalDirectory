@@ -46,7 +46,7 @@
     </tbody>
 </table>
 
-<script type="text/javascript" charset="utf8" src="${url.currentModule}/javascript/jquery.js"></script>
+<script type="text/javascript" charset="utf8" src="${url.currentModule}/javascript/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" charset="utf8" src="${url.currentModule}/javascript/jquery.dataTables.js"></script>
 <script>
     $('#listOfEmployees').DataTable();

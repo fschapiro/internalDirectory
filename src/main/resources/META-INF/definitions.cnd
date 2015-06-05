@@ -22,7 +22,6 @@
  - mobilePhoneNumber (string)
  - skypeID (string)
  - photo (weakreference, picker[type='image'])
- - team (weakreference, choicelist[nodes='$currentSite//*;busdirnt:team']) hidden internationalized < 'busdirnt:team'
 
 [busdirnt:employeesList] > jnt:content, busdirmix:busdircomponents, mix:title
  - maxResults (double)

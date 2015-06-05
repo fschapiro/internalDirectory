@@ -21,10 +21,10 @@
 
 <c:set var="photo" value="${currentNode.properties['photo'].node}"/>
 <c:if test="${not empty photo}">
-    <img src="${currentNode.properties['photo'].node.url}" align="left" hspace="10" vspace="10"/>
+	<img src="${currentNode.properties['photo'].node.url}" align="left" hspace="10" vspace="10"/>
 </c:if>
 <c:if test="${ empty photo}">
-    <img align="left" hspace="10" vspace="10"/>
+	<img align="left" hspace="10" vspace="10"/>
 </c:if>
 
 <h2>${currentNode.properties['firstName'].string}&nbsp;${currentNode.properties['lastName'].string}</h2>
@@ -32,33 +32,34 @@
 
 <c:set var="location" value="${currentNode.properties['location'].string}"/>
 <c:if test="${not empty location}">
-    <p><fmt:message key="busdirnt_employee.location"/>:${currentNode.properties['location'].string}</p>
+	<p><fmt:message key="busdirnt_employee.location"/>:${currentNode.properties['location'].string}</p>
 </c:if>
 
 <c:set var="email" value="${currentNode.properties['email'].string}"/>
 <c:if test="${not empty email}">
-    <p><fmt:message key="busdirnt_employee.email"/>:${currentNode.properties['email'].string}</p>
+	<p><fmt:message key="busdirnt_employee.email"/>:${currentNode.properties['email'].string}</p>
 </c:if>
 
 <c:set var="mobile" value="${currentNode.properties['mobilePhoneNumber'].string}"/>
 <c:if test="${not empty mobile}">
-    <p><fmt:message key="busdirnt_employee.mobilePhoneNumber"/>:${currentNode.properties['mobilePhoneNumber'].string}</p>
+	<p><fmt:message
+			key="busdirnt_employee.mobilePhoneNumber"/>:${currentNode.properties['mobilePhoneNumber'].string}</p>
 </c:if>
 <c:set var="fixnumber" value="${currentNode.properties['fixPhoneNumber'].string}"/>
 <c:if test="${not empty fixnumber}">
-    <p><fmt:message key="busdirnt_employee.fixPhoneNumber"/>:${currentNode.properties['fixPhoneNumber'].string}</p>
+	<p><fmt:message key="busdirnt_employee.fixPhoneNumber"/>:${currentNode.properties['fixPhoneNumber'].string}</p>
 </c:if>
 
 <c:set var="skypeID" value="${currentNode.properties['skypeID'].string}"/>
 <c:if test="${not empty skypeID}">
-    <p><fmt:message key="busdirnt_employee.skypeID"/>:${currentNode.properties['skypeID'].string}</p>
+	<p><fmt:message key="busdirnt_employee.skypeID"/>:${currentNode.properties['skypeID'].string}</p>
 </c:if>
 
 <c:set var="team" value="${currentNode.parent}"/>
 <c:if test="${not empty team}">
-    <fmt:message key="busdirnt_employee.team"/>:<template:module node="${team}" view="default"/>
+	<fmt:message key="busdirnt_employee.team"/>:<template:module node="${team}" view="default"/>
 </c:if>
 <c:if test="${empty team}">
-    <fmt:message key="busdirnt_employee.team"/>:<fmt:message key="busdirnt.noTeam"/>
+	<fmt:message key="busdirnt_employee.team"/>:<fmt:message key="busdirnt.noTeam"/>
 </c:if>
 
