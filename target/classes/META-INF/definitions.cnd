@@ -12,10 +12,6 @@
  + * (busdirnt:team)
  + * (busdirnt:employee)
 
-[busdirnt:employeesList] > jnt:content, busdirmix:busdircomponents, jmix:list, mix:title
- - maxResults (double)
- - resultView (string, choicelist[templates='busdirnt:employee']) = 'employee_team' mandatory nofulltext
-
 [busdirnt:employee] > jnt:content, mix:title
  - jcr:title (string) mandatory
  - firstName (string) mandatory
@@ -27,4 +23,8 @@
  - skypeID (string)
  - photo (weakreference, picker[type='image'])
  - team (weakreference, choicelist[nodes='$currentSite//*;busdirnt:team']) hidden internationalized < 'busdirnt:team'
+
+[busdirnt:employeesList] > jnt:content, busdirmix:busdircomponents, mix:title
+ - maxResults (double)
+ - resultView (string, choicelist[templates='busdirnt:employee']) = 'employee_team' mandatory nofulltext
 

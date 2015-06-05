@@ -10,15 +10,4 @@
 <%@ taglib prefix="utility" uri="http://www.jahia.org/tags/utilityLib" %>
 <%@ taglib prefix="s" uri="http://www.jahia.org/tags/search" %>
 
-
-<c:set var="teamName" value="${currentNode.properties['jcr:title'].string}"/>
-
-<c:set var="manager" value="${currentNode.properties['manager'].node}"/>
-
-<c:if test="${not empty manager}">
-  <a href="${currentNode.url}">${teamName}</a> &nbsp; - &nbsp; <a href="${manager.url}">${manager.properties['firstName'].string} &nbsp; ${manager.properties['lastName'].string}</a>
-</c:if>
-
-<c:if test="${empty manager}">
-  <template:module node="${currentNode}" view="team_NoFormat_noManager"/>
-</c:if>
+<a href="${currentNode.url}">${currentNode.properties['jcr:title'].string}</a>

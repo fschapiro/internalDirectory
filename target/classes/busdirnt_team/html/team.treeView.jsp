@@ -10,32 +10,61 @@
 <%@ taglib prefix="utility" uri="http://www.jahia.org/tags/utilityLib" %>
 <%@ taglib prefix="s" uri="http://www.jahia.org/tags/search" %>
 
-<link rel="stylesheet" href="Users/fschapiro/Downloads/vakata-jstree-5bece58/dist/dist/themes/default/style.min.css" />
+<c:set var="treeLevel" value="${currentResource.moduleParams.treeLevel}"/>
+<c:set var="parentTreeLevel" value="${currentResource.moduleParams.parentTreeLevel}"/>
+<c:set var="initialLoop" value="0"/>
 
+<c:if test="${empty treeLevel}">
+    <c:set var="treeLevel" value="0"/>
+    <c:set var="parentTreeLevel" value="${treeLevel}"/>
+</c:if>
 
-<div id="teamStructure">
-    <ul>
-        <li><template:module node="${currentNode}" view="noFormat" /></li>
-        <ul>
+<c:if test="${treeLevel eq 0}">
+<table id="teamStructure-${treeLevel}">
+</c:if>
+    <c:choose>
+        <c:when test="${treeLevel eq 0}">
+        <tr data-tt-id="${treeLevel}">
+            <td><template:module node="${currentNode}" view="team_noFormat" /></td>
+            <c:set var="parentTreeLevel" value="${treeLevel}"/>
+            <c:set var="treeLevel" value="${treeLevel+1}"/>
+            <c:set var="initialLoop" value="1"/>
+        </tr>
+        </c:when>
+        <c:otherwise>
+            <tr data-tt-id="${treeLevel}" data-tt-parent-id="${parentTreeLevel}">
+                <td><template:module node="${currentNode}" view="team_noFormat" /></td>
+                <c:set var="parentTreeLevel" value="${treeLevel}"/>
+                <c:set var="treeLevel" value="${treeLevel+1}"/>
+                <c:set var="initialLoop" value="0"/>
+            </tr>
+        </c:otherwise>
+    </c:choose>
         <c:forEach items="${currentNode.nodes}" var="nodeOfTeam">
             <c:if test="${jcr:isNodeType(nodeOfTeam,'busdirnt:employee')}">
-                <li> <template:module node="${nodeOfTeam}" view="default" /></li>
+                <tr data-tt-id="${treeLevel}" data-tt-parent-id="${parentTreeLevel}"><td><template:module node="${nodeOfTeam}" view="employee_noFormat" /></td></tr>
+                <c:set var="treeLevel" value="${treeLevel+1}"/>
             </c:if>
             <c:if test="${jcr:isNodeType(nodeOfTeam,'busdirnt:team')}">
-                <template:module node="${nodeOfTeam}" view="treeView" />
+                <template:module node="${nodeOfTeam}" view="treeView">
+                    <template:param name="parentTreeLevel" value="${parentTreeLevel}"></template:param>
+                    <template:param name="treeLevel" value="${treeLevel+1}"></template:param>
+                </template:module>
             </c:if>
         </c:forEach>
-        </ul>
-    </ul>
-</div>
+<c:if test="${treeLevel eq 0}">
+</table>
+</c:if>
 
-<script src="dist/libs/jquery.js"></script>
-
-<script src="dist/jstree.min.js"></script>
-
+<c:if test="${initialLoop eq 1}">
+    <template:addResources type="css" resources="${url.currentModule}/css/jquery.treetable.theme.default.css,${url.currentModule}/css/jquery.treetable.css"/>
+<script src="${url.currentModule}/javascript/jquery-2.1.4.min.js"></script>
+<script src="${url.currentModule}/javascript/jquery.treetable.js"></script>
 <script>
-    $(function () { $('#teamStructure').jstree(); });
+    $('#teamStructure-${parentTreeLevel}').treetable({expandable: true, initialState: "expanded"});
 </script>
+</c:if>
+<c:set var="initialLoop" value="0"/>
 
 
 
