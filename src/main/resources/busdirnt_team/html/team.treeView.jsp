@@ -26,20 +26,20 @@
         <c:when test="${treeLevel eq 0}">
         <tr data-tt-id="${treeLevel}">
             <td><template:module node="${currentNode}" view="team_noFormat" /></td>
-            <c:set var="parentTreeLevel" value="${treeLevel}"/>
-            <c:set var="treeLevel" value="${treeLevel+1}"/>
             <c:set var="initialLoop" value="1"/>
         </tr>
         </c:when>
         <c:otherwise>
             <tr data-tt-id="${treeLevel}" data-tt-parent-id="${parentTreeLevel}">
                 <td><template:module node="${currentNode}" view="team_noFormat" /></td>
-                <c:set var="parentTreeLevel" value="${treeLevel}"/>
-                <c:set var="treeLevel" value="${treeLevel+1}"/>
                 <c:set var="initialLoop" value="0"/>
             </tr>
         </c:otherwise>
     </c:choose>
+
+<c:set var="parentTreeLevel" value="${treeLevel}"/>
+<c:set var="treeLevel" value="${treeLevel+1}"/>
+
         <c:forEach items="${currentNode.nodes}" var="nodeOfTeam">
             <c:if test="${jcr:isNodeType(nodeOfTeam,'busdirnt:employee')}">
                 <tr data-tt-id="${treeLevel}" data-tt-parent-id="${parentTreeLevel}"><td><template:module node="${nodeOfTeam}" view="employee_noFormat" /></td></tr>
@@ -52,7 +52,7 @@
                 </template:module>
             </c:if>
         </c:forEach>
-<c:if test="${treeLevel eq 0}">
+<c:if test="${initialLoop eq 1}">
 </table>
 </c:if>
 
