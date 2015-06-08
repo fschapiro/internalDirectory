@@ -20,5 +20,5 @@
 </c:if>
 
 <c:if test="${empty manager}">
-  <a href="${currentNode.url}">${teamName}</a>
+  <template:module node="${currentNode}" view="team_NoFormat_noManager"/>
 </c:if>

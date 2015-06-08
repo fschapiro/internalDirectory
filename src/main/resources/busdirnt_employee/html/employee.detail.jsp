@@ -24,34 +24,47 @@
 
 <c:set var="location" value="${currentNode.properties['location'].string}"/>
 <c:if test="${not empty location}">
-	<p><fmt:message key="busdirnt_employee.location"/>:${location}</p>
+	<p><fmt:message key="busdirnt_employee.location"/>:&nbsp;${location}</p>
 </c:if>
 
 <c:set var="email" value="${currentNode.properties['email'].string}"/>
 <c:if test="${not empty email}">
-	<p><fmt:message key="busdirnt_employee.email"/>:${email}</p>
+	<p><fmt:message key="busdirnt_employee.email"/>:&nbsp;${email}</p>
 </c:if>
 
 <c:set var="mobile" value="${currentNode.properties['mobilePhoneNumber'].string}"/>
 <c:if test="${not empty mobile}">
 	<p><fmt:message
-			key="busdirnt_employee.mobilePhoneNumber"/>:${mobile}</p>
+			key="busdirnt_employee.mobilePhoneNumber"/>:&nbsp;${mobile}</p>
 </c:if>
 <c:set var="fixnumber" value="${currentNode.properties['fixPhoneNumber'].string}"/>
 <c:if test="${not empty fixnumber}">
-	<p><fmt:message key="busdirnt_employee.fixPhoneNumber"/>:${fixnumber}</p>
+	<p><fmt:message key="busdirnt_employee.fixPhoneNumber"/>:&nbsp;${fixnumber}</p>
 </c:if>
 
 <c:set var="skypeID" value="${currentNode.properties['skypeID'].string}"/>
 <c:if test="${not empty skypeID}">
-	<p><fmt:message key="busdirnt_employee.skypeID"/>:${skypeID}</p>
+	<p><fmt:message key="busdirnt_employee.skypeID"/>:&nbsp;${skypeID}</p>
 </c:if>
 
 <c:set var="team" value="${currentNode.parent}"/>
 <c:if test="${not empty team}">
-	<fmt:message key="busdirnt_employee.team"/>:<template:module node="${team}" view="default"/>
+	<fmt:message key="busdirnt_employee.team"/>:&nbsp;<template:module node="${team}" view="team_noFormat"/>
 </c:if>
 <c:if test="${empty team}">
-	<fmt:message key="busdirnt_employee.team"/>:<fmt:message key="busdirnt.noTeam"/>
+	<fmt:message key="busdirnt_employee.team"/>:&nbsp;<fmt:message key="busdirnt.noTeam"/>
 </c:if>
 
+<c:if test="${(renderContext.loggedIn) and (currentNode.properties['jcr:title'].string eq renderContext.user.username)}">
+
+<form action="${url.base}${currentNode.path}.employeeSwitchToUpdateAction.do" method="post">
+
+    <input type="submit" value="Update" class="button"/>
+
+	<input type="hidden" name="jcrNodeType" value="busdirnt:employee"/>
+	<input type="hidden" name="jcrRedirectTo" value="${url.base}${renderContext.mainResource.node.path}.updateform"/>
+	<input type="hidden" name="jcrNewNodeOutputFormat" value="html"/>
+	<input type="hidden" name="jcrResourceID" value="${currentNode.identifier}"/>
+
+</form>
+</c:if>
