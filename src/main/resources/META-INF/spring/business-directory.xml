@@ -6,8 +6,4 @@
         <property name="name" value="employeeSwitchToUpdateAction"/>
         <property name="requireAuthenticatedUser" value="true"/>
     </bean>
-    <bean class="com.domain.jahia.actions.EmployeeUpdateAction">
-        <property name="name" value="employeeUpdateAction"/>
-        <property name="requireAuthenticatedUser" value="true"/>
-    </bean>
 </beans>

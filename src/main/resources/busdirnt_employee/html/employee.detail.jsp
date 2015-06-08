@@ -58,13 +58,11 @@
 <c:if test="${(renderContext.loggedIn) and (currentNode.properties['jcr:title'].string eq renderContext.user.username)}">
 
 <form action="${url.base}${currentNode.path}.employeeSwitchToUpdateAction.do" method="post">
-
     <input type="submit" value="Update" class="button"/>
 
 	<input type="hidden" name="jcrNodeType" value="busdirnt:employee"/>
 	<input type="hidden" name="jcrRedirectTo" value="${url.base}${renderContext.mainResource.node.path}.updateform"/>
 	<input type="hidden" name="jcrNewNodeOutputFormat" value="html"/>
 	<input type="hidden" name="jcrResourceID" value="${currentNode.identifier}"/>
-
 </form>
 </c:if>

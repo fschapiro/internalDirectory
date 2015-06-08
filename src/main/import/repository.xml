@@ -1,70 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <content xmlns:j="http://www.jahia.org/jahia/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0">
     <modules jcr:primaryType="jnt:modules">
-        <business-directory j:dependencies="default"
-                          j:modulePriority="0"
-                          j:moduleType="module"
-                          j:title="Business Directory"
-                          jcr:mixinTypes="jmix:hasExternalProviderExtension"
-                          jcr:primaryType="jnt:module">
-                
-                <portlets jcr:primaryType="jnt:portletFolder"/>
+        <business-directory j:dependencies="bootstrap bootstrap-components default"
+                            j:modulePriority="0"
+                            j:moduleType="module"
+                            j:title="Business Directory"
+                            jcr:mixinTypes="jmix:hasExternalProviderExtension"
+                            jcr:primaryType="jnt:module">
+
+            <portlets jcr:primaryType="jnt:portletFolder"/>
+            <files jcr:primaryType="jnt:folder"/>
+            <contents jcr:primaryType="jnt:contentFolder"/>
+            <templates j:rootTemplatePath="/base" jcr:primaryType="jnt:templatesFolder">
                 <files jcr:primaryType="jnt:folder"/>
                 <contents jcr:primaryType="jnt:contentFolder"/>
-                <templates j:rootTemplatePath="/base" jcr:primaryType="jnt:templatesFolder">
-                    <files jcr:primaryType="jnt:folder"/>
-                    <contents jcr:primaryType="jnt:contentFolder"/>
-                    <employee-details j:applyOn="busdirnt:employee"
+                <employee-details j:applyOn="busdirnt:employee"
+                                  j:defaultTemplate="true"
+                                  j:hiddenTemplate="false"
+                                  jcr:primaryType="jnt:contentTemplate">
+                    <j:translation_en jcr:language="en"
+                                      jcr:mixinTypes="mix:title"
+                                      jcr:primaryType="jnt:translation"
+                                      jcr:title="Employee details"/>
+                    <pagecontent jcr:primaryType="jnt:contentList">
+                        <bootstrap-container fluid="true" jcr:primaryType="jnt:bootstrapContainer">
+                            <bootstrap-container jcr:primaryType="jnt:contentList">
+                                    <main-resource-display j:mainResourceView="detail" jcr:primaryType="jnt:mainResourceDisplay"/>
+                                <back jcr:primaryType="jnt:backToParentPage">
+                                    <j:translation_en jcr:language="en"
+                                                      jcr:mixinTypes="mix:title"
+                                                      jcr:primaryType="jnt:translation"
+                                                      jcr:title="Back"/>
+                                </back>
+                            </bootstrap-container>
+                        </bootstrap-container>
+                    </pagecontent>
+                </employee-details>
+                <team-details j:applyOn="busdirnt:team busdirnt:teamPoc2"
                               j:defaultTemplate="true"
                               j:hiddenTemplate="false"
                               jcr:primaryType="jnt:contentTemplate">
-                        <j:translation_en jcr:language="en"
-                                 jcr:mixinTypes="mix:title"
-                                 jcr:primaryType="jnt:translation"
-                                 jcr:title="Employee details"/>
-                        <pagecontent jcr:primaryType="jnt:contentList">
-                            <main-resource-display j:mainResourceView="detail" jcr:primaryType="jnt:mainResourceDisplay"/>
-                            <back jcr:primaryType="jnt:backToParentPage">
-                                <j:translation_en jcr:language="en"
-                                       jcr:mixinTypes="mix:title"
-                                       jcr:primaryType="jnt:translation"
-                                       jcr:title="Back"/>
-                            </back>
-                        </pagecontent>
-                    </employee-details>
-                    <team-details j:applyOn="busdirnt:team"
-                          j:defaultTemplate="true"
-                          j:hiddenTemplate="false"
-                          jcr:primaryType="jnt:contentTemplate">
-                        <j:translation_en jcr:language="en"
-                                 jcr:mixinTypes="mix:title"
-                                 jcr:primaryType="jnt:translation"
-                                 jcr:title="Team details"/>
-                        <pagecontent jcr:primaryType="jnt:contentList">
-                            <main-resource-display j:mainResourceView="detail" jcr:primaryType="jnt:mainResourceDisplay"/>
-                            <back jcr:primaryType="jnt:backToParentPage">
-                                <j:translation_en jcr:language="en"
-                                       jcr:mixinTypes="mix:title"
-                                       jcr:primaryType="jnt:translation"
-                                       jcr:title="Back"/>
-                            </back>
-                        </pagecontent>
-                    </team-details>
-                    <updateform j:applyOn="busdirnt:employee"
-                        j:defaultTemplate="false"
-                        j:hiddenTemplate="false"
-                        jcr:primaryType="jnt:contentTemplate">
-                        <j:translation_en jcr:language="en"
-                                 jcr:mixinTypes="mix:title"
-                                 jcr:primaryType="jnt:translation"
-                                 jcr:title="updateForm"/>
-                        <pagecontent jcr:primaryType="jnt:contentList">
-                            <main-resource-display j:mainResourceView="updateForm"
-                                         jcr:primaryType="jnt:mainResourceDisplay"/>
-                        </pagecontent>
-                    </updateform>
-                </templates>
+                    <j:translation_en jcr:language="en"
+                                      jcr:mixinTypes="mix:title"
+                                      jcr:primaryType="jnt:translation"
+                                      jcr:title="Team details"/>
+                    <pagecontent jcr:primaryType="jnt:contentList">
+                        <bootstrap-container fluid="true" jcr:primaryType="jnt:bootstrapContainer">
+                            <bootstrap-container jcr:primaryType="jnt:contentList">
+                                    <main-resource-display j:mainResourceView="detail" jcr:primaryType="jnt:mainResourceDisplay"/>
+                                <back jcr:primaryType="jnt:backToParentPage">
+                                    <j:translation_en jcr:language="en"
+                                                      jcr:mixinTypes="mix:title"
+                                                      jcr:primaryType="jnt:translation"
+                                                      jcr:title="Back"/>
+                                </back>
+                            </bootstrap-container>
+                        </bootstrap-container>
+                    </pagecontent>
+                </team-details>
+                <updateform j:applyOn="busdirnt:employee"
+                            j:defaultTemplate="false"
+                            j:hiddenTemplate="false"
+                            jcr:primaryType="jnt:contentTemplate">
+                    <j:translation_en jcr:language="en"
+                                      jcr:mixinTypes="mix:title"
+                                      jcr:primaryType="jnt:translation"
+                                      jcr:title="updateForm"/>
+                    <pagecontent jcr:primaryType="jnt:contentList">
+                            <bootstrap-container fluid="true" jcr:primaryType="jnt:bootstrapContainer">
+                                <bootstrap-container jcr:primaryType="jnt:contentList">
+                        <main-resource-display j:mainResourceView="updateForm"
+                                               jcr:primaryType="jnt:mainResourceDisplay"/>
+                                </bootstrap-container>
+                            </bootstrap-container>
+                    </pagecontent>
+                </updateform>
+            </templates>
                 
-            </business-directory>
+        </business-directory>
     </modules>
 </content>

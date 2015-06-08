@@ -19,7 +19,7 @@ import java.util.Map;
 
 public class EmployeeSwitchToUpdateAction extends Action {
 
-    private static final transient Logger logger = LoggerFactory.getLogger(EmployeeUpdateAction.class);
+    private static final transient Logger logger = LoggerFactory.getLogger(EmployeeSwitchToUpdateAction.class);
 
     public ActionResult doExecute(HttpServletRequest httpServletRequest, RenderContext renderContext,
                                   Resource resource, JCRSessionWrapper jcrSessionWrapper, Map<String, List<String>> parameters,
