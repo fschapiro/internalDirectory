@@ -103,8 +103,9 @@
 		</div>
 
 	<c:if test="${(renderContext.loggedIn) and (currentNode.properties['jcr:title'].string eq renderContext.user.username)}">
+		<div class="control-group-button">
 		<form action="${url.base}${currentNode.path}.employeeSwitchToUpdateAction.do" method="post">
-			<input type="submit" value="Update" class="button"/>
+			<input type="submit" value="Update" class="control-button btn btn-primary"/>
 
 			<input type="hidden" name="jcrNodeType" value="busdirnt:employee"/>
 			<input type="hidden" name="jcrRedirectTo"
@@ -112,5 +113,6 @@
 			<input type="hidden" name="jcrNewNodeOutputFormat" value="html"/>
 			<input type="hidden" name="jcrResourceID" value="${currentNode.identifier}"/>
 		</form>
+		</div>
 	</c:if>
 </div>
