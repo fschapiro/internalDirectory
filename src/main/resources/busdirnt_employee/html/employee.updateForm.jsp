@@ -16,7 +16,7 @@
 	<h2>${currentNode.properties['firstName'].string}&nbsp;${currentNode.properties['lastName'].string}</h2>
 	<h4>${currentNode.properties['jcr:title'].string}</h4>
 	<template:tokenizedForm>
-		<div class="busdir-form">
+		<div class="busdir">
 		<div class="control-group"><label class="control-label"><fmt:message key="busdirnt_employee.photo"/></label>
 			<input type="file" name="photo"
 				   class="control-input-file"/>
