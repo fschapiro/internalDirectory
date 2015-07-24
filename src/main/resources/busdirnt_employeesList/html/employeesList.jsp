@@ -13,41 +13,41 @@
 <template:addResources type="css" resources="${url.currentModule}/css/jquery.dataTables.css"/>
 
 <jcr:sql var="employeeListData"
-    sql="select * from [busdirnt:employee] as emp order by emp.[j:lastName] asc"/>
-     
+		 sql="SELECT * FROM [busdirnt:employee] AS emp WHERE ISDESCENDANTNODE(emp, '${currentNode.resolveSite.path}') ORDER BY emp.[j:lastName] asc"/>
+
 
 <table id="listOfEmployees" class="display">
-    <thead>
-        <tr>
-            <th><fmt:message key="busdirnt_employeeList.Name"/></th>
-            <th><fmt:message key="busdirnt_employeeList.Team"/></th>
-            <th><fmt:message key="busdirnt_employeeList.Manager"/></th>
-            <th><fmt:message key="busdirnt_employeeList.Location"/></th>
-        </tr>
-    </thead>
-    <tbody>
-      	<c:forEach items="${employeeListData.nodes}" var="employ">
-        <tr>
-            <td><template:module node="${employ}" view="employee_noFormat"/></td>
-            <c:set var="teamOfEmployee" value="${employ.parent}"/>
-            <td><template:module node="${teamOfEmployee}" view="team_noFormat_noManager"/></td>
-            <c:set var="managerOfTeam" value="${teamOfEmployee.properties['manager'].node}"/>
-            <c:choose>
-                <c:when test="${not empty managerOfTeam}">
-                    <td><template:module node="${managerOfTeam}" view="employee_noFormat"/></td>
-                </c:when>
-                <c:otherwise>
-                    <td><fmt:message key="busdirnt_employeeList.NoManager"/></td>
-                </c:otherwise>
-            </c:choose>
-            <td>${employ.properties['location'].string}</td>
-        </tr>
-    </c:forEach>
-    </tbody>
+	<thead>
+	<tr>
+		<th><fmt:message key="busdirnt_employeeList.Name"/></th>
+		<th><fmt:message key="busdirnt_employeeList.Team"/></th>
+		<th><fmt:message key="busdirnt_employeeList.Manager"/></th>
+		<th><fmt:message key="busdirnt_employeeList.Location"/></th>
+	</tr>
+	</thead>
+	<tbody>
+	<c:forEach items="${employeeListData.nodes}" var="employ">
+		<tr>
+			<td><template:module node="${employ}" view="employee_noFormat"/></td>
+			<c:set var="teamOfEmployee" value="${employ.parent}"/>
+			<td><template:module node="${teamOfEmployee}" view="team_noFormat_noManager"/></td>
+			<c:set var="managerOfTeam" value="${teamOfEmployee.properties['manager'].node}"/>
+			<c:choose>
+				<c:when test="${not empty managerOfTeam}">
+					<td><template:module node="${managerOfTeam}" view="employee_noFormat"/></td>
+				</c:when>
+				<c:otherwise>
+					<td><fmt:message key="busdirnt_employeeList.NoManager"/></td>
+				</c:otherwise>
+			</c:choose>
+			<td><template:module node="${employ.properties['location'].node}"/></td>
+		</tr>
+	</c:forEach>
+	</tbody>
 </table>
 
 <script type="text/javascript" charset="utf8" src="${url.currentModule}/javascript/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" charset="utf8" src="${url.currentModule}/javascript/jquery.dataTables.js"></script>
 <script>
-    $('#listOfEmployees').DataTable();
+	$('#listOfEmployees').DataTable();
 </script>

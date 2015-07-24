@@ -10,10 +10,8 @@
 <%@ taglib prefix="utility" uri="http://www.jahia.org/tags/utilityLib" %>
 <%@ taglib prefix="s" uri="http://www.jahia.org/tags/search" %>
 
-<template:addResources type="css" resources="${url.currentModule}/css/businessdirectory.css"/>
-
 <div class="busdir-employee">
-	<h2>${currentNode.properties['j:firstName'].string}&nbsp;${currentNode.properties['j:lastName'].string}</h2>
+	<h1>${currentNode.properties['j:firstName'].string}&nbsp;${currentNode.properties['j:lastName'].string}</h1>
 
 	<c:set var="photo" value="${currentNode.properties['j:picture'].node}"/>
 	<c:if test="${not empty photo}">
@@ -62,23 +60,12 @@
 						<template:module node="${team}" view="team_noFormat"/>
 					</c:when>
 					<c:otherwise>
-						<fmt:message key="busdirnt.noTeam"/>
+						<fmt:message key="busdir.label.noTeam"/>
 					</c:otherwise>
 				</c:choose>
 		</div>
 
-	<%--<c:if test="${(renderContext.loggedIn) and (currentNode.properties['jcr:title'].string eq
-	renderContext.user.username)}">--%>
-		<div class="control-group-button">
-		<form action="${url.base}${currentNode.path}.employeeSwitchToUpdateAction.do" method="post">
-			<input type="submit" value="Update" class="control-button btn btn-primary"/>
-
-			<input type="hidden" name="jcrNodeType" value="busdirnt:employee"/>
-			<input type="hidden" name="jcrRedirectTo"
-				   value="${url.base}${renderContext.mainResource.node.path}.updateform"/>
-			<input type="hidden" name="jcrNewNodeOutputFormat" value="html"/>
-			<input type="hidden" name="jcrResourceID" value="${currentNode.identifier}"/>
-		</form>
-		</div>
-	<%--</c:if>--%>
+	<div class="btn btn-primary">
+		<a href="${url.base}${currentNode.path}.employee-update.html"><fmt:message key="busdir.label.update"/></a>
+	</div>
 </div>

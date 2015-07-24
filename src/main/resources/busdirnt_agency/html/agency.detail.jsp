@@ -22,7 +22,7 @@
 <c:set var="image" value="${currentNode.properties['image'].node}"/>
 
 <div class="busdir-agency">
-	<h2 class="busdir-agency-title">${currentNode.properties['jcr:title'].string}</h2>
+	<h1 class="busdir-agency-title">${currentNode.properties['jcr:title'].string}</h1>
 
 	<c:if test="${not empty description}">
 		<div class="busdir-agency-description">

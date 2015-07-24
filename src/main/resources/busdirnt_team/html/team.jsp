@@ -22,3 +22,13 @@
 <c:if test="${empty manager}">
   <h5><a href="${currentNode.url}">${teamName}</a></h5>
 </c:if>
+
+<ul>
+  <c:forEach items="${jcr:getChildrenOfType(currentNode, 'busdirnt:team')}" var="subteam">
+    <li><template:module node="${subteam}" view="default"/></li>
+  </c:forEach>
+</ul>
+
+<c:if test="${renderContext.editMode}">
+  <template:module path="*" />
+</c:if>

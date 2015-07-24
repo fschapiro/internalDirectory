@@ -10,28 +10,23 @@
 <%@ taglib prefix="utility" uri="http://www.jahia.org/tags/utilityLib" %>
 <%@ taglib prefix="s" uri="http://www.jahia.org/tags/search" %>
 
-<template:addResources type="css" resources="${url.currentModule}/css/businessdirectory.css"/>
+<%--<c:if test="${(renderContext.loggedIn) and (currentNode.properties['jcr:title'].string eq
+renderContext.user.username)}">--%>
+	<h1>${currentNode.properties['j:firstName'].string}&nbsp;${currentNode.properties['j:lastName'].string}</h1>
+	<template:tokenizedForm><label class="control-label"><fmt:message key="busdirnt_employee.photo"/></label>
 
-<c:if test="${(renderContext.loggedIn) and (currentNode.properties['jcr:title'].string eq renderContext.user.username)}">
-	<h2>${currentNode.properties['j:firstName'].string}&nbsp;${currentNode.properties['j:lastName'].string}</h2>
-	<h4>${currentNode.properties['jcr:title'].string}</h4>
-	<template:tokenizedForm>
-		<div class="busdir">
-		<div class="control-group"><label class="control-label"><fmt:message key="busdirnt_employee.photo"/></label>
-			<input type="file" name="photo"
-				   class="control-input-file"/>
-		</div>
 
 		<form action="${url.base}${currentNode.path}" method="post" enctype="multipart/form-data">
+			<input type="file" name="photo"
+				   class="control-input-file"/>
+			<div><span><fmt:message key="busdirnt_employee.email"/></span>
+					${currentNode.properties['j:email'].string}</div>
 
-			<div class="control-group"><span class="control-label"><fmt:message key="busdirnt_employee.email"/></span>
-					${currentNode.properties['j:email'].string}<br/></div>
+			<div><span><fmt:message key="busdirnt_employee.team"/></span>
+				<template:module node="${team}" view="default"/></div>
 
-			<div class="control-group"><span class="control-label"><fmt:message key="busdirnt_employee.team"/></span>
-				<template:module node="${team}" view="default"/><br/></div>
-
-			<div class="control-group">
-				<label class="control-label" for="location"><fmt:message key="busdirnt_employee.location"/></label>
+			<div>
+				<label for="location"><fmt:message key="busdirnt_employee.location"/></label>
 				<c:set var="registeredLocation" value="${currentNode.properties['location'].string}"/>
 				<select name="location" id="location">
 					<option <c:if test="${registeredLocation eq 'Geneva'}">selected="selected"</c:if>>Geneva</option>
@@ -48,8 +43,9 @@
 					<option <c:if test="${registeredLocation eq 'Other'}">selected="selected"</c:if>>Other</option>
 				</select>
 			</div>
-			<div class="control-group">
-				<label class="control-label" for="fixPhoneNumber"><fmt:message
+
+			<div>
+				<label for="fixPhoneNumber"><fmt:message
 						key="busdirnt_employee.fixPhoneNumber"/></label>
 				<input
 						type="text"
@@ -59,8 +55,8 @@
 						value="${currentNode.properties['fixPhoneNumber'].string}"
 						class="input-large"/>
 			</div>
-			<div class="control-group">
-				<label class="control-label" for="mobilePhoneNumber"><fmt:message
+			<div>
+				<label for="mobilePhoneNumber"><fmt:message
 						key="busdirnt_employee.mobilePhoneNumber"/></label>
 				<input
 						type="text"
@@ -69,8 +65,8 @@
 						value="${currentNode.properties['mobilePhoneNumber'].string}"/>
 			</div>
 
-			<div class="control-group">
-				<label class="control-label"
+			<div>
+				<label
 					   for="skypeID"><fmt:message key="busdirnt_employee.skypeID"/></label>
 				<input type="text"
 					   name="skypeID"
@@ -79,10 +75,10 @@
 					   value="${currentNode.properties['skypeID'].string}"/>
 			</div>
 
-			<div class="control-group-button">
-				<input class="control-button btn btn-primary" type="button" value="Cancel"
+			<div>
+				<input class="btn btn-primary" type="button" value="Cancel"
 					   onclick="window.history.back()"/>
-				<input class="control-button btn btn-primary" type="submit" value="Update"/>
+				<input class="btn btn-primary" type="submit" value="Update"/>
 			</div>
 
 			<input type="hidden" name="jcrNodeType" value="busdirnt:employee"/>
@@ -95,7 +91,7 @@
 		</form>
 	</template:tokenizedForm>
 	</div>
-</c:if>
+<%--</c:if>
 <c:if test="${not renderContext.loggedIn}">
 	<h4>this form only appears when logged in</h4>
-</c:if>
+</c:if>--%>
