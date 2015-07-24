@@ -10,6 +10,8 @@
 <%@ taglib prefix="utility" uri="http://www.jahia.org/tags/utilityLib" %>
 <%@ taglib prefix="s" uri="http://www.jahia.org/tags/search" %>
 
+<template:addResources type="css" resources="${url.currentModule}/css/businessdirectory.css"/>
+
 <c:set var="treeLevel" value="${currentResource.moduleParams.treeLevel}"/>
 <c:set var="parentTreeLevel" value="${currentResource.moduleParams.parentTreeLevel}"/>
 <c:set var="initialLoop" value="0"/>

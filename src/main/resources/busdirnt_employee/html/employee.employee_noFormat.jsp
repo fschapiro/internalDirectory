@@ -10,4 +10,5 @@
 <%@ taglib prefix="utility" uri="http://www.jahia.org/tags/utilityLib" %>
 <%@ taglib prefix="s" uri="http://www.jahia.org/tags/search" %>
 
-<a href="${currentNode.url}">${currentNode.properties['firstName'].string}&nbsp;${currentNode.properties['lastName'].string}</a>
+<a href="${currentNode.url}">${currentNode.properties['j:firstName'].string}&nbsp;
+${currentNode.properties['j:lastName'].string}</a>

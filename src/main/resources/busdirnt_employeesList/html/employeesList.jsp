@@ -13,7 +13,7 @@
 <template:addResources type="css" resources="${url.currentModule}/css/jquery.dataTables.css"/>
 
 <jcr:sql var="employeeListData"
-    sql="select * from [busdirnt:employee] as emp where isdescendantnode(['${currentNode.resolveSite.path}']) order by emp.[lastName] asc"/>
+    sql="select * from [busdirnt:employee] as emp order by emp.[j:lastName] asc"/>
      
 
 <table id="listOfEmployees" class="display">

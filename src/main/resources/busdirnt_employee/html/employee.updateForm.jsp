@@ -13,7 +13,7 @@
 <template:addResources type="css" resources="${url.currentModule}/css/businessdirectory.css"/>
 
 <c:if test="${(renderContext.loggedIn) and (currentNode.properties['jcr:title'].string eq renderContext.user.username)}">
-	<h2>${currentNode.properties['firstName'].string}&nbsp;${currentNode.properties['lastName'].string}</h2>
+	<h2>${currentNode.properties['j:firstName'].string}&nbsp;${currentNode.properties['j:lastName'].string}</h2>
 	<h4>${currentNode.properties['jcr:title'].string}</h4>
 	<template:tokenizedForm>
 		<div class="busdir">
@@ -25,7 +25,7 @@
 		<form action="${url.base}${currentNode.path}" method="post" enctype="multipart/form-data">
 
 			<div class="control-group"><span class="control-label"><fmt:message key="busdirnt_employee.email"/></span>
-					${currentNode.properties['email'].string}<br/></div>
+					${currentNode.properties['j:email'].string}<br/></div>
 
 			<div class="control-group"><span class="control-label"><fmt:message key="busdirnt_employee.team"/></span>
 				<template:module node="${team}" view="default"/><br/></div>

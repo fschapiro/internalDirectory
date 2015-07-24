@@ -14,9 +14,10 @@
             <templates j:rootTemplatePath="/base" jcr:primaryType="jnt:templatesFolder">
                 <files jcr:primaryType="jnt:folder"/>
                 <contents jcr:primaryType="jnt:contentFolder"/>
-                <employee-details j:applyOn="busdirnt:employee"
+                    <employee-details j:applyOn="busdirnt:employee jnt:user"
                                   j:defaultTemplate="true"
                                   j:hiddenTemplate="false"
+                              j:priority="100"
                                   jcr:primaryType="jnt:contentTemplate">
                     <j:translation_en jcr:language="en"
                                       jcr:mixinTypes="mix:title"
@@ -36,7 +37,7 @@
                         </bootstrap-container>
                     </pagecontent>
                 </employee-details>
-                <team-details j:applyOn="busdirnt:team busdirnt:teamPoc2"
+                    <team-details j:applyOn="busdirnt:team busdirnt:teamPoc"
                               j:defaultTemplate="true"
                               j:hiddenTemplate="false"
                               jcr:primaryType="jnt:contentTemplate">
@@ -75,6 +76,30 @@
                             </bootstrap-container>
                     </pagecontent>
                 </updateform>
+                    <agency-details j:applyOn="busdirnt:agency"
+                            j:defaultTemplate="true"
+                            j:hiddenTemplate="false"
+                            j:priority="50"
+                            jcr:primaryType="jnt:contentTemplate">
+                        <j:translation_en jcr:language="en"
+                                 jcr:primaryType="jnt:translation"
+                                 jcr:title="Agency details"/>
+                        <pagecontent jcr:primaryType="jnt:contentList">
+                            <bootstrap-container fluid="true"
+                                       j:workInProgress="false"
+                                       jcr:primaryType="jnt:bootstrapContainer">
+                                <bootstrap-container jcr:primaryType="jnt:contentList">
+                                    <main-resource-display j:mainResourceView="detail" jcr:primaryType="jnt:mainResourceDisplay"/>
+                                    <back-to-parent-page jcr:primaryType="jnt:backToParentPage">
+                                        <j:translation_en j:workInProgress="false"
+                                             jcr:language="en"
+                                             jcr:primaryType="jnt:translation"
+                                             jcr:title="Back"/>
+                                    </back-to-parent-page>
+                            </bootstrap-container>
+                            </bootstrap-container>
+                        </pagecontent>
+                    </agency-details>
             </templates>
                 
         </business-directory>

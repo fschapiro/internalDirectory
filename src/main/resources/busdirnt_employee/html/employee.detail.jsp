@@ -12,85 +12,51 @@
 
 <template:addResources type="css" resources="${url.currentModule}/css/businessdirectory.css"/>
 
-<div class="busdir">
-	<h2>${currentNode.properties['firstName'].string}&nbsp;${currentNode.properties['lastName'].string}</h2>
-	<h5>${currentNode.properties['jcr:title'].string}</h5>
+<div class="busdir-employee">
+	<h2>${currentNode.properties['j:firstName'].string}&nbsp;${currentNode.properties['j:lastName'].string}</h2>
 
-	<c:set var="photo" value="${currentNode.properties['photo'].node}"/>
+	<c:set var="photo" value="${currentNode.properties['j:picture'].node}"/>
 	<c:if test="${not empty photo}">
-		<div class="control-group">
-			<span class="control-label">&nbsp;</span>
-			<span class="control-value">
-				<img class="busdir-photo" src="${photo.url}?t=thumbnail"/>
-			</span>
-		</div>
+		<img class="busdir-photo" src="${photo.url}?t=thumbnail"/>
 	</c:if>
 
-	<c:set var="location" value="${currentNode.properties['location'].string}"/>
+	<c:set var="location" value="${currentNode.properties['location'].node}"/>
 	<c:if test="${not empty location}">
-		<div class="control-group">
-			<span class="control-label">
-				<fmt:message key="busdirnt_employee.location"/>
-			</span>
-			<span class="control-value">
-				${location}
-			</span>
+		<div>
+				<fmt:message key="busdirnt_employee.location"/>&nbsp;<template:module node="${location}"/>
 		</div>
 	</c:if>
 
 	<c:set var="email" value="${currentNode.properties['email'].string}"/>
 	<c:if test="${not empty email}">
-		<div class="control-group">
-			<span class="control-label">
-				<fmt:message key="busdirnt_employee.email"/>
-			</span>
-			<span class="control-value">
-					${email}
-			</span>
+		<div>
+				<fmt:message key="busdirnt_employee.email"/>&nbsp;${email}
 		</div>
 	</c:if>
 
 	<c:set var="mobile" value="${currentNode.properties['mobilePhoneNumber'].string}"/>
 	<c:if test="${not empty mobile}">
-		<div class="control-group">
-			<span class="control-label">
-				<fmt:message key="busdirnt_employee.mobilePhoneNumber"/>
-			</span>
-			<span class="control-value">
-					${mobile}
-			</span>
+		<div>
+				<fmt:message key="busdirnt_employee.mobilePhoneNumber"/>&nbsp;${mobile}
 		</div>
 	</c:if>
 	<c:set var="fixnumber" value="${currentNode.properties['fixPhoneNumber'].string}"/>
 	<c:if test="${not empty fixnumber}">
-		<div class="control-group">
-			<span class="control-label">
-				<fmt:message key="busdirnt_employee.fixPhoneNumber"/>
-			</span>
-			<span class="control-value">
-					${fixnumber}
-			</span>
+		<div>
+				<fmt:message key="busdirnt_employee.fixPhoneNumber"/>&nbsp;${fixnumber}
 		</div>
 	</c:if>
 
 	<c:set var="skypeID" value="${currentNode.properties['skypeID'].string}"/>
 	<c:if test="${not empty skypeID}">
-		<div class="control-group">
-			<span class="control-label">
-				<fmt:message key="busdirnt_employee.skypeID"/>
-			</span>
-			<span class="control-value">
-					${skypeID}
-			</span>
+		<div>
+				<fmt:message key="busdirnt_employee.skypeID"/>&nbsp;${skypeID}
 		</div>
 	</c:if>
 
 	<c:set var="team" value="${currentNode.parent}"/>
 		<div class="control-group">
-			<span class="control-label">
-				<fmt:message key="busdirnt_employee.team"/>
-			</span>
-			<span class="control-value">
+				<fmt:message key="busdirnt_employee.team"/><br/>
 				<c:choose>
 					<c:when test="${not empty team}">
 						<template:module node="${team}" view="team_noFormat"/>
@@ -99,10 +65,10 @@
 						<fmt:message key="busdirnt.noTeam"/>
 					</c:otherwise>
 				</c:choose>
-			</span>
 		</div>
 
-	<c:if test="${(renderContext.loggedIn) and (currentNode.properties['jcr:title'].string eq renderContext.user.username)}">
+	<%--<c:if test="${(renderContext.loggedIn) and (currentNode.properties['jcr:title'].string eq
+	renderContext.user.username)}">--%>
 		<div class="control-group-button">
 		<form action="${url.base}${currentNode.path}.employeeSwitchToUpdateAction.do" method="post">
 			<input type="submit" value="Update" class="control-button btn btn-primary"/>
@@ -114,5 +80,5 @@
 			<input type="hidden" name="jcrResourceID" value="${currentNode.identifier}"/>
 		</form>
 		</div>
-	</c:if>
+	<%--</c:if>--%>
 </div>

@@ -6,24 +6,27 @@
 
 [busdirmix:busdircomponents] > jmix:droppableContent mixin
 
+[busdirnt:agency] > jnt:content, busdirmix:busdircomponents, mix:title
+ - jcr:title (string) mandatory
+ - description (string, richtext) i18n
+ - image (weakreference, picker[type='image'])
+
 [busdirnt:team] > jnt:content, busdirmix:busdircomponents, mix:title
  - jcr:title (string) mandatory
  - manager (weakreference, choicelist[nodes='$currentSite//*;busdirnt:employee']) < 'busdirnt:employee'
  + * (busdirnt:team)
  + * (busdirnt:employee)
 
-[busdirnt:employee] > jnt:content, mix:title
- - jcr:title (string) mandatory
- - firstName (string) mandatory
- - lastName (string) mandatory
- - location (string, choicelist[resourceBundle]) < 'Geneva', 'Paris', 'Toronto', 'Klagenfurt', 'Dusseldorf', 'Washington D.C.', 'Houston', 'Other'
- - email (string) < '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}'
+[busdirnt:employee] > jnt:content, mix:title, busdirmix:busdircomponents
+ - j:firstName (string) mandatory
+ - j:lastName (string) mandatory
+ - image (weakreference, picker[type='image'])
+ - email (string)
+ - location (weakreference, choicelist[nodes='$currentSite//*;busdirnt:agency'])
  - fixPhoneNumber (string)
  - mobilePhoneNumber (string)
  - skypeID (string)
- - photo (weakreference, picker[type='image'])
 
 [busdirnt:employeesList] > jnt:content, busdirmix:busdircomponents, mix:title
  - maxResults (double)
  - resultView (string, choicelist[templates='busdirnt:employee']) = 'employee_team' mandatory nofulltext
-
