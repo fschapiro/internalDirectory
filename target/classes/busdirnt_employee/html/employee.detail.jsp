@@ -10,61 +10,62 @@
 <%@ taglib prefix="utility" uri="http://www.jahia.org/tags/utilityLib" %>
 <%@ taglib prefix="s" uri="http://www.jahia.org/tags/search" %>
 
+<div class="busdir-employee">
+	<h1>${currentNode.properties['j:firstName'].string}&nbsp;${currentNode.properties['j:lastName'].string}</h1>
 
-<c:set var="photo" value="${currentNode.properties['photo'].node}"/>
-<c:if test="${not empty photo}">
-	<img src="${photo.url}" align="left" hspace="10" vspace="10"/>
-</c:if>
-<c:if test="${ empty photo}">
-	<img align="left" hspace="10" vspace="10"/>
-</c:if>
+	<c:set var="photo" value="${currentNode.properties['j:picture'].node}"/>
+	<c:if test="${not empty photo}">
+		<img class="busdir-photo" src="${photo.url}?t=thumbnail"/>
+	</c:if>
 
-<h2>${currentNode.properties['firstName'].string}&nbsp;${currentNode.properties['lastName'].string}</h2>
-<h5>${currentNode.properties['jcr:title'].string}</h5>
+	<c:set var="location" value="${currentNode.properties['location'].node}"/>
+	<c:if test="${not empty location}">
+		<div>
+				<fmt:message key="busdirnt_employee.location"/>&nbsp;<template:module node="${location}"/>
+		</div>
+	</c:if>
 
-<c:set var="location" value="${currentNode.properties['location'].string}"/>
-<c:if test="${not empty location}">
-	<p><fmt:message key="busdirnt_employee.location"/>:&nbsp;${location}</p>
-</c:if>
+	<c:set var="email" value="${currentNode.properties['email'].string}"/>
+	<c:if test="${not empty email}">
+		<div>
+				<fmt:message key="busdirnt_employee.email"/>&nbsp;${email}
+		</div>
+	</c:if>
 
-<c:set var="email" value="${currentNode.properties['email'].string}"/>
-<c:if test="${not empty email}">
-	<p><fmt:message key="busdirnt_employee.email"/>:&nbsp;${email}</p>
-</c:if>
+	<c:set var="mobile" value="${currentNode.properties['mobilePhoneNumber'].string}"/>
+	<c:if test="${not empty mobile}">
+		<div>
+				<fmt:message key="busdirnt_employee.mobilePhoneNumber"/>&nbsp;${mobile}
+		</div>
+	</c:if>
+	<c:set var="fixnumber" value="${currentNode.properties['fixPhoneNumber'].string}"/>
+	<c:if test="${not empty fixnumber}">
+		<div>
+				<fmt:message key="busdirnt_employee.fixPhoneNumber"/>&nbsp;${fixnumber}
+		</div>
+	</c:if>
 
-<c:set var="mobile" value="${currentNode.properties['mobilePhoneNumber'].string}"/>
-<c:if test="${not empty mobile}">
-	<p><fmt:message
-			key="busdirnt_employee.mobilePhoneNumber"/>:&nbsp;${mobile}</p>
-</c:if>
-<c:set var="fixnumber" value="${currentNode.properties['fixPhoneNumber'].string}"/>
-<c:if test="${not empty fixnumber}">
-	<p><fmt:message key="busdirnt_employee.fixPhoneNumber"/>:&nbsp;${fixnumber}</p>
-</c:if>
+	<c:set var="skypeID" value="${currentNode.properties['skypeID'].string}"/>
+	<c:if test="${not empty skypeID}">
+		<div>
+				<fmt:message key="busdirnt_employee.skypeID"/>&nbsp;${skypeID}
+		</div>
+	</c:if>
 
-<c:set var="skypeID" value="${currentNode.properties['skypeID'].string}"/>
-<c:if test="${not empty skypeID}">
-	<p><fmt:message key="busdirnt_employee.skypeID"/>:&nbsp;${skypeID}</p>
-</c:if>
+	<c:set var="team" value="${currentNode.parent}"/>
+		<div class="control-group">
+				<fmt:message key="busdirnt_employee.team"/><br/>
+				<c:choose>
+					<c:when test="${not empty team}">
+						<template:module node="${team}" view="team_noFormat"/>
+					</c:when>
+					<c:otherwise>
+						<fmt:message key="busdir.label.noTeam"/>
+					</c:otherwise>
+				</c:choose>
+		</div>
 
-<c:set var="team" value="${currentNode.parent}"/>
-<c:if test="${not empty team}">
-	<fmt:message key="busdirnt_employee.team"/>:&nbsp;<template:module node="${team}" view="team_noFormat"/>
-</c:if>
-<c:if test="${empty team}">
-	<fmt:message key="busdirnt_employee.team"/>:&nbsp;<fmt:message key="busdirnt.noTeam"/>
-</c:if>
-
-<c:if test="${(renderContext.loggedIn) and (currentNode.properties['jcr:title'].string eq renderContext.user.username)}">
-
-<form action="${url.base}${currentNode.path}.employeeSwitchToUpdateAction.do" method="post">
-
-    <input type="submit" value="Update" class="button"/>
-
-	<input type="hidden" name="jcrNodeType" value="busdirnt:employee"/>
-	<input type="hidden" name="jcrRedirectTo" value="${url.base}${renderContext.mainResource.node.path}.updateform"/>
-	<input type="hidden" name="jcrNewNodeOutputFormat" value="html"/>
-	<input type="hidden" name="jcrResourceID" value="${currentNode.identifier}"/>
-
-</form>
-</c:if>
+	<div class="btn btn-primary">
+		<a href="${url.base}${currentNode.path}.employee-update.html"><fmt:message key="busdir.label.update"/></a>
+	</div>
+</div>

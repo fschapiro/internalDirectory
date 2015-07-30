@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1433759207051
-Build-Jdk: 1.8.0_45
-Built-By: fschapiro
+Bnd-LastModified: 1438180730493
+Build-Jdk: 1.7.0_79
+Built-By: jroussel
 Bundle-Category: jahia-module
 Bundle-Description: This is the custom module (Business Directory) for r
  unning on a Digital Factory server.
@@ -12,72 +12,71 @@ Bundle-SymbolicName: business-directory
 Bundle-Vendor: Jahia Solutions Group SA
 Bundle-Version: 1.0.0.SNAPSHOT
 Created-By: Apache Maven Bundle Plugin
+Dynamic-ImportPackage: *
 Implementation-Title: Business Directory
 Implementation-URL: http://www.jahia.com
 Implementation-Vendor: Jahia Solutions Group SA
 Implementation-Version: 1.0-SNAPSHOT
-Import-Package: javax.servlet.http;version="[3.0,4)",org.jahia.services.
- content,org.jahia.services.render,org.slf4j;version="[1.6,2)",org.jahia
- .bin,org.apache.taglibs.standard.tag.rt.fmt,org.jahia.exceptions,org.ap
- ache.taglibs.standard.tag.common.core,org.jahia.taglibs;version="[7.0,8
- )",org.jahia.services.seo,org.jahia.utils,org.jahia.taglibs.internal.i1
- 8n;version="[7.0,8)",org.jahia.services.sites,org.jahia.taglibs.utility
- ;version="[7.0,8)",org.jahia.services.usermanager,org.jahia.taglibs.tem
- plate;version="[7.0,8)",org.jahia.data.viewhelper.principal,org.apache.
- commons.lang.math;version="[2.6,3)",org.apache.taglibs.standard.functio
- ns,org.apache.commons.lang;version="[2.6,3)",org.jahia.services.content
- .decorator,org.jahia.taglibs.search;version="[7.0,8)",org.jahia.taglibs
- .functions;version="[7.0,8)",org.jahia.taglibs.uicomponents;version="[7
- .0,8)",org.apache.taglibs.unstandard;version="[7.0,8)",org.jahia.taglib
- s.utility.constants;version="[7.0,8)",org.apache.commons.id,org.apache.
- taglibs.standard.tag.rt.core,org.jahia.taglibs.internal.gwt;version="[7
- .0,8)",org.jahia.taglibs.template.layoutmanager;version="[7.0,8)",org.j
- ahia.taglibs.uicomponents.user;version="[7.0,8)",org.jahia.taglibs.uico
- mponents.portlets;version="[7.0,8)",org.jahia.taglibs.utility.siteprope
- rties;version="[7.0,8)",org.jahia.taglibs.jcr.node;version="[7.0,8)",or
- g.jahia.taglibs.template.include;version="[7.0,8)",org.jahia.taglibs.ui
- components.loginform;version="[7.0,8)",org.jahia.taglibs.query;version=
- "[7.0,8)",org.jahia.defaults.config.spring,org.jahia.services.render.sc
- ripting,javax.jcr;version="[2.0,3)",org.apache.solr.schema,org.jahia.ta
- glibs.utility.i18n;version="[7.0,8)",org.jahia.taglibs.uicomponents.i18
- n;version="[7.0,8)",org.jahia.taglibs.template.gwt;version="[7.0,8)",or
- g.jahia.services.content.rules,org.jahia.taglibs.jcr.query;version="[7.
- 0,8)",org.jahia.taglibs.uicomponents.image;version="[7.0,8)",org.jahia.
- taglibs.internal.date;version="[7.0,8)",org.jahia.services.content.node
- types,org.jahia.taglibs.utility.session;version="[7.0,8)",org.jahia.tag
- libs.internal.uicomponents;version="[7.0,8)",org.jahia.services,org.jah
- ia.taglibs.jcr;version="[7.0,8)",org.jahia.taglibs.template.pager;versi
- on="[7.0,8)",org.apache.taglibs.standard.tei,org.jahia.taglibs.user;ver
- sion="[7.0,8)"
-Jahia-Depends: default
+Import-Package: org.jahia.taglibs.utility.session;version="[7.0,8)",org.
+ apache.taglibs.standard.tag.common.core,org.jahia.services.render.scrip
+ ting,org.jahia.data.viewhelper.principal,org.apache.taglibs.standard.fu
+ nctions,org.jahia.taglibs.jcr;version="[7.0,8)",org.jahia.taglibs.searc
+ h;version="[7.0,8)",org.jahia.taglibs.uicomponents;version="[7.0,8)",or
+ g.jahia.utils,javax.jcr;version="[2.0,3)",org.jahia.services.usermanage
+ r,org.jahia.taglibs.template.include;version="[7.0,8)",org.apache.commo
+ ns.lang;version="[2.6,3)",org.apache.taglibs.unstandard;version="[7.0,8
+ )",org.jahia.exceptions,org.jahia.taglibs.utility;version="[7.0,8)",org
+ .apache.commons.lang.math;version="[2.6,3)",org.apache.taglibs.standard
+ .tag.rt.fmt,org.jahia.services.content.rules,org.jahia.taglibs.uicompon
+ ents.user;version="[7.0,8)",org.jahia.taglibs.jcr.query;version="[7.0,8
+ )",org.jahia.taglibs.uicomponents.image;version="[7.0,8)",org.jahia.tag
+ libs.internal.date;version="[7.0,8)",org.jahia.taglibs.uicomponents.por
+ tlets;version="[7.0,8)",org.apache.commons.id,org.jahia.services.conten
+ t.nodetypes,org.jahia.taglibs.uicomponents.i18n;version="[7.0,8)",org.j
+ ahia.taglibs.utility.constants;version="[7.0,8)",org.jahia.taglibs.util
+ ity.siteproperties;version="[7.0,8)",org.jahia.services,org.slf4j;versi
+ on="[1.6,2)",org.jahia.taglibs.template.layoutmanager;version="[7.0,8)"
+ ,org.apache.naming.java,org.jahia.services.sites,org.jahia.taglibs.temp
+ late;version="[7.0,8)",org.jahia.taglibs.template.pager;version="[7.0,8
+ )",org.jahia.taglibs.template.gwt;version="[7.0,8)",org.jahia.services.
+ seo,org.jahia.taglibs.query;version="[7.0,8)",org.jahia.services.conten
+ t.decorator,javax.servlet.http;version="[3.0,4)",org.jahia.taglibs.jcr.
+ node;version="[7.0,8)",org.jahia.taglibs.utility.i18n;version="[7.0,8)"
+ ,org.apache.taglibs.standard.tag.rt.core,org.jahia.defaults.config.spri
+ ng,org.jahia.taglibs.uicomponents.loginform;version="[7.0,8)",org.jahia
+ .services.render,org.apache.taglibs.standard.tei,org.jahia.taglibs;vers
+ ion="[7.0,8)",org.jahia.taglibs.functions;version="[7.0,8)",org.jahia.s
+ ervices.content,org.jahia.taglibs.user;version="[7.0,8)"
+Jahia-Depends: default,bootstrap,bootstrap-components,location
 Jahia-GroupId: org.jahia.modules
 Jahia-Module-Type: module
-Jahia-Required-Version: 7.0.0.4
+Jahia-Required-Version: 7.0.0.6
 Jahia-Source-Control-Connection: scm:dummy:uri
 Jahia-Source-Control-DeveloperConnection: scm:dummy:uri
-Jahia-Source-Folders: /Users/fschapiro/Documents/Internal_Installs/Enter
- priseDistribution-DigitalFactory7005-SDK/digital-factory-data/business-
- directory
+Jahia-Source-Folders: /Users/jroussel/Documents/Jahia-Development/Annuai
+ re
 Jahia-Static-Resources: /css,/icons,/images,/img,/javascript
 Provide-Capability: com.jahia.services.content; nodetypes:List<String>="
- busdirmix:busdircomponents,busdirnt:employee,busdirnt:employeesList,bus
- dirnt:team"
+ busdirmix:busdircomponents,busdirnt:agency,busdirnt:agencyList,busdirnt
+ :employee,busdirnt:employeesList,busdirnt:team"
 Require-Capability: com.jahia.services.content; filter:="(nodetypes=jmix
  :droppableContent)",com.jahia.services.content; filter:="(nodetypes=jmi
  x:hasExternalProviderExtension)",com.jahia.services.content; filter:="(
  nodetypes=jnt:backToParentPage)",com.jahia.services.content; filter:="(
- nodetypes=jnt:content)",com.jahia.services.content; filter:="(nodetypes
- =jnt:contentFolder)",com.jahia.services.content; filter:="(nodetypes=jn
- t:contentList)",com.jahia.services.content; filter:="(nodetypes=jnt:con
- tentTemplate)",com.jahia.services.content; filter:="(nodetypes=jnt:file
- )",com.jahia.services.content; filter:="(nodetypes=jnt:folder)",com.jah
- ia.services.content; filter:="(nodetypes=jnt:mainResourceDisplay)",com.
- jahia.services.content; filter:="(nodetypes=jnt:module)",com.jahia.serv
- ices.content; filter:="(nodetypes=jnt:modules)",com.jahia.services.cont
- ent; filter:="(nodetypes=jnt:portletFolder)",com.jahia.services.content
- ; filter:="(nodetypes=jnt:templatesFolder)",com.jahia.services.content;
-  filter:="(nodetypes=jnt:translation)",com.jahia.services.content; filt
- er:="(nodetypes=mix:title)"
+ nodetypes=jnt:bootstrapContainer)",com.jahia.services.content; filter:=
+ "(nodetypes=jnt:content)",com.jahia.services.content; filter:="(nodetyp
+ es=jnt:contentFolder)",com.jahia.services.content; filter:="(nodetypes=
+ jnt:contentList)",com.jahia.services.content; filter:="(nodetypes=jnt:c
+ ontentTemplate)",com.jahia.services.content; filter:="(nodetypes=jnt:fo
+ lder)",com.jahia.services.content; filter:="(nodetypes=jnt:location)",c
+ om.jahia.services.content; filter:="(nodetypes=jnt:mainResourceDisplay)
+ ",com.jahia.services.content; filter:="(nodetypes=jnt:map)",com.jahia.s
+ ervices.content; filter:="(nodetypes=jnt:module)",com.jahia.services.co
+ ntent; filter:="(nodetypes=jnt:modules)",com.jahia.services.content; fi
+ lter:="(nodetypes=jnt:portletFolder)",com.jahia.services.content; filte
+ r:="(nodetypes=jnt:templatesFolder)",com.jahia.services.content; filter
+ :="(nodetypes=jnt:translation)",com.jahia.services.content; filter:="(n
+ odetypes=mix:title)"
 Specification-Title: Business Directory
 Specification-Vendor: Jahia Solutions Group SA
 Specification-Version: 1.0-SNAPSHOT

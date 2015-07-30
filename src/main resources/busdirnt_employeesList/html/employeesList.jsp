@@ -40,7 +40,7 @@
 					<td><fmt:message key="busdirnt_employeeList.NoManager"/></td>
 				</c:otherwise>
 			</c:choose>
-			<td><template:module node="${employ.properties['location'].node}"/></td>
+			<td><template:module node="${employ.properties['location'].node}" view="small"/></td>
 		</tr>
 	</c:forEach>
 	</tbody>

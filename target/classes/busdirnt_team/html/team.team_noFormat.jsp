@@ -20,5 +20,5 @@
 </c:if>
 
 <c:if test="${empty manager}">
-  <template:module node="${currentNode}" view="team_NoFormat_noManager"/>
+  <template:module node="${currentNode}" view="team_noFormat_noManager"/>
 </c:if>

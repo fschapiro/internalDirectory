@@ -16,9 +16,19 @@
 <c:set var="manager" value="${currentNode.properties['manager'].node}"/>
 
 <c:if test="${not empty manager}">
-  <a href="${currentNode.url}"><h5>${teamName}</a> &nbsp; - &nbsp; <a href="${manager.url}">${manager.properties['firstName'].string} &nbsp; ${manager.properties['lastName'].string}</a></h5>
+  <h5><a href="${currentNode.url}">${teamName}</a> &nbsp; - &nbsp; <a href="${manager.url}">${manager.properties['firstName'].string} &nbsp; ${manager.properties['lastName'].string}</a></h5>
 </c:if>
 
 <c:if test="${empty manager}">
-  <a href="${currentNode.url}"><h5>${teamName}</h5></a>
+  <h5><a href="${currentNode.url}">${teamName}</a></h5>
+</c:if>
+
+<ul>
+  <c:forEach items="${jcr:getChildrenOfType(currentNode, 'busdirnt:team')}" var="subteam">
+    <li><template:module node="${subteam}" view="default"/></li>
+  </c:forEach>
+</ul>
+
+<c:if test="${renderContext.editMode}">
+  <template:module path="*" />
 </c:if>

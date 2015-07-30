@@ -10,4 +10,6 @@
 <%@ taglib prefix="utility" uri="http://www.jahia.org/tags/utilityLib" %>
 <%@ taglib prefix="s" uri="http://www.jahia.org/tags/search" %>
 
-<h5><a href="${currentNode.url}">${currentNode.properties['firstName'].string}&nbsp;${currentNode.properties['lastName'].string}</a>&nbsp;- <template:module node="${currentNode.parent}" view="team_noFormat"/></h5>
+<h5><a href="${currentNode.url}">${currentNode.properties['j:firstName'].string}&nbsp;
+${currentNode.properties['j:lastName'].string}</a>&nbsp;- <template:module node="${currentNode.parent}"
+																		  view="team_noFormat"/></h5>
