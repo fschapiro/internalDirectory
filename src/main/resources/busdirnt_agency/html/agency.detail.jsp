@@ -20,17 +20,14 @@
 
 <c:set var="description" value="${currentNode.properties['description'].string}"/>
 <c:set var="image" value="${currentNode.properties['image'].node}"/>
+<c:set var="title" value="${currentNode.properties['jcr:title'].string}"/>
 
-<div class="busdir-agency">
-	<h1 class="busdir-agency-title">${currentNode.properties['jcr:title'].string}</h1>
-
-	<c:if test="${not empty description}">
-		<div class="busdir-agency-description">
-				${description}
-		</div>
-	</c:if>
-
-	<c:if test="${not empty image}">
-		<template:module node="${image}" editable="false"/>
-	</c:if>
+<div class="card">
+	<div class="info about">
+		<h5>About ${title} office</h5>
+		<c:if test="${not empty description}">
+			${description}
+		</c:if>
+	</div>
+	<div class="agency-photo"><img src="${url.files}${image.path}" alt="${title}"/></div>
 </div>

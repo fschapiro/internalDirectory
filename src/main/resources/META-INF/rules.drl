@@ -15,16 +15,15 @@ global JCRContentUtils jcrUtils
 
 rule "Add manager edit rights on team"
 	when
-		/*if a manager is set*/
+		// If a manager is set
 		A property manager has been set on a node
         	- the node has the type busdirnt:team
 	then
-		/*this manager has edit rights on this team*/
-		Log "give edit rights to manager " + node.getNode().getProperty("manager").getNode().getName()
+		// This manager has edit rights on this team
+		Log "Give edit rights to manager " + node.getNode().getProperty("manager").getNode().getName()
 		> String userToSet = node.getNode().getProperty("manager").getNode().getName();
-		//Grant role editor on the node to the user userToSet
+		// Grant role editor on the node to the user userToSet
 		> service.grantRoleToUser(node, userToSet, "editor", drools);
-		
 end
 
 rule "Add employee edit rights on employee"
