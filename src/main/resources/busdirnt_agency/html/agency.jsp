@@ -64,7 +64,7 @@
 						${fn:escapeXml(street)}
 					</c:if>
 					<c:if test="${not empty zipCode || not empty town}">
-						,
+					<c:if test="${not empty street}">, </c:if>
 						<c:if test="${not empty zipCode}">
 							${fn:escapeXml(zipCode)}&nbsp;
 						</c:if>
