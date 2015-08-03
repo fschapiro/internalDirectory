@@ -21,7 +21,6 @@
 <template:addResources type="css" resources="businessDirectory.css"/>
 <template:addResources type="css" resources="bootstrap.min.css"/>
 <template:addResources type="javascript" resources="plugins.js"/>
-<template:addResources type="javascript" resources="businessDirectory.js"/>
 
 <c:set var="title" value="${currentNode.properties['jcr:title'].string}"/>
 <c:set var="agencies" value="${jcr:getChildrenOfType(currentNode, jcr:getConstraints(currentNode))}"/>
