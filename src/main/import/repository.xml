@@ -91,7 +91,7 @@
                                                     layout="4_8"
                                                     rowType="predefined">
                                 <bootstrap-layer-container-rows-a-side1 jcr:primaryType="jnt:contentList">
-                                    <main-resource-display j:mainResourceView="default" jcr:primaryType="jnt:mainResourceDisplay"/>
+                                    <main-resource-display-1 j:mainResourceView="default" jcr:primaryType="jnt:mainResourceDisplay"/>
                                 </bootstrap-layer-container-rows-a-side1>
                                 <bootstrap-layer-container-rows-a jcr:primaryType="jnt:contentList">
                                     <main-resource-display j:mainResourceView="detail" jcr:primaryType="jnt:mainResourceDisplay"/>

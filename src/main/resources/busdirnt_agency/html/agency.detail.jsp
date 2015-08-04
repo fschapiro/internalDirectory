@@ -22,12 +22,12 @@
 <c:set var="image" value="${currentNode.properties['image'].node}"/>
 <c:set var="title" value="${currentNode.properties['jcr:title'].string}"/>
 
-<div class="card">
-	<div class="info about">
-		<h5>About ${title} office</h5>
-		<c:if test="${not empty description}">
-			${description}
-		</c:if>
-	</div>
-	<div class="agency-photo"><img src="${url.files}${image.path}" alt="${title}"/></div>
+<div class="card-about-info">
+	<h3 class="card-info-title">About ${title} office</h3>
+	<c:if test="${not empty description}">
+		<div class="card-info">
+				${description}
+		</div>
+	</c:if>
 </div>
+<img src="${url.files}${image.path}" alt="${title}" class="agency-photo"/>

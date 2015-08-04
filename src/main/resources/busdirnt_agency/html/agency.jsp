@@ -31,51 +31,55 @@
 <c:set var="zipCode" value="${currentNode.properties['j:zipCode'].string}"/>
 <c:set var="country" value="${currentNode.properties['j:country'].string}"/>
 
-<div class="card">
-	<div class="info">
+<div class="agency-card">
+	<div class="card-header-info">
 		<c:if test="${not empty image}">
-			<img src="${url.files}${image.path}" alt="${title}"/>
+			<img src="${url.files}${image.path}" alt="${title}" class="card-picture"/>
 		</c:if>
-
-		<h2><a href="${currentNode.url}">${title}</a></h2>
-
+		<h2 class="card-title"><a href="${currentNode.url}">${title}</a></h2>
 		<jcr:sql var="agencyEmployees"
 				 sql="SELECT * FROM [busdirnt:employee] AS emp WHERE ISDESCENDANTNODE(emp, '${currentNode.resolveSite.path}') AND emp.[location] = '${currentNode.identifier}'"/>
-		<h3><a href="#">${agencyEmployees.nodes.size} <fmt:message key="busdir.label.members"/></a></h3>
+		<div class="card-subtitle">${agencyEmployees.nodes.size} <fmt:message key="busdir.label.members"/></div>
+	</div>
 
-		<div class="splitter"></div>
-		<c:if test="${not empty fixPhoneNumber}">
-			<div class="field">
-				<img
-						src="<c:url value="${url.currentModule}/img/ic_phone.png" />" /><h4><a href="tel:">${fixPhoneNumber}</a></h4>
-			</div>
-		</c:if>
-		<c:if test="${not empty faxNumber}">
-			<div class="field">
-				<img src="<c:url value="${url.currentModule}/img/ic_fax.png" />" /><h4><a href="tel:">${faxNumber}</a></h4>
-			</div>
-		</c:if>
+	<div class="card-body-info">
+		<div class="card-info-split">
+			<c:if test="${not empty fixPhoneNumber}">
+				<div class="field">
+					<img
+							src="<c:url value="${url.currentModule}/img/ic_phone.png" />"/><div class="card-field"><a
+						href="tel:">${fixPhoneNumber}</a></div>
+				</div>
+			</c:if>
+			<c:if test="${not empty faxNumber}">
+				<div class="field">
+					<img src="<c:url value="${url.currentModule}/img/ic_fax.png" />"/><div class="card-field"><a
+						href="tel:">${faxNumber}</a></div>
+				</div>
+			</c:if>
 
-		<div class="field">
-			<address>
-				<img src="<c:url value="${url.currentModule}/img/ic_location.png" />" />
-				<h4>
-					<c:if test="${not empty street}">
-						${fn:escapeXml(street)}
-					</c:if>
-					<c:if test="${not empty zipCode || not empty town}">
-					<c:if test="${not empty street}">, </c:if>
-						<c:if test="${not empty zipCode}">
-							${fn:escapeXml(zipCode)}&nbsp;
+			<div class="field">
+				<address>
+					<img src="<c:url value="${url.currentModule}/img/ic_location.png" />"/>
+					<div class="card-field">
+						<c:if test="${not empty street}">
+							${fn:escapeXml(street)}
 						</c:if>
-						${not empty town ? fn:escapeXml(town) : ''}
-					</c:if>
-					<jcr:nodePropertyRenderer name="j:country" node="${currentNode}" renderer="country" var="country"/>
-					<c:if test="${not empty country}">
-						(${fn:escapeXml(country.displayName)})
-					</c:if>
-				</h4>
-			</address>
+						<c:if test="${not empty zipCode || not empty town}">
+							<c:if test="${not empty street}">, </c:if>
+							<c:if test="${not empty zipCode}">
+								${fn:escapeXml(zipCode)}&nbsp;
+							</c:if>
+							${not empty town ? fn:escapeXml(town) : ''}
+						</c:if>
+						<jcr:nodePropertyRenderer name="j:country" node="${currentNode}" renderer="country"
+												  var="country"/>
+						<c:if test="${not empty country}">
+							(${fn:escapeXml(country.displayName)})
+						</c:if>
+					</div>
+				</address>
+			</div>
 		</div>
 	</div>
 </div>
