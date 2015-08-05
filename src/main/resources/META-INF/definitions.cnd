@@ -7,13 +7,14 @@
 [busdirmix:busdircomponents] > jmix:droppableContent mixin
 
 [busdirnt:agency] > jnt:content, busdirmix:busdircomponents, mix:title, jnt:location
- - jcr:title (string) mandatory
+ - jcr:title (string) mandatory i18n
  - description (string, richtext) i18n
  - fixPhoneNumber (string)
  - faxNumber (string)
  - image (weakreference, picker[type='image'])
 
-[busdirnt:agencyList] > jnt:content, busdirmix:busdircomponents, mix:title
+[busdirnt:agencyList] > jnt:content, busdirmix:busdircomponents, mix:title, jmix:list
+orderable
  - jcr:title (string) i18n mandatory
  + * (busdirnt:agency)
 
@@ -26,6 +27,8 @@
 [busdirnt:employee] > jnt:content, mix:title, busdirmix:busdircomponents
  - j:firstName (string) mandatory
  - j:lastName (string) mandatory
+ - role (string) i18n
+ - description (string, richtext) i18n
  - image (weakreference, picker[type='image'])
  - email (string) < '^$|[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}'
  - location (weakreference, choicelist[nodes='$currentSite//*;busdirnt:agency'])

@@ -10,6 +10,14 @@
 <%@ taglib prefix="utility" uri="http://www.jahia.org/tags/utilityLib" %>
 <%@ taglib prefix="s" uri="http://www.jahia.org/tags/search" %>
 
+<c:set var="teamName" value="${currentNode.properties['jcr:title'].string}"/>
 
-<a href="${currentNode.url}"><h5>${currentNode.properties['j:firstName'].string}&nbsp;
-${currentNode.properties['j:lastName'].string}</h5></a>
+<c:set var="employees" value="${jcr:getChildrenOfType(currentNode, 'busdirnt:employee')}"/>
+
+<div class="team-card">
+	<div class="card-header-info">
+		<h1 class="card-title"><a href="${currentNode.url}">${teamName}</a></h1>
+		<div class="card-subtitle"><a href="teams2.html#members">${fn:length(employees)}&nbsp;<fmt:message
+				key="busdir.label.members"/></a></div>
+	</div>
+</div>

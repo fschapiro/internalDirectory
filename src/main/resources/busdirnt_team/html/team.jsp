@@ -29,6 +29,14 @@
   </c:forEach>
 </ul>
 
+
+
+
+
+
+
+
+
 <c:if test="${renderContext.editMode}">
   <template:module path="*" />
 </c:if>

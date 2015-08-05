@@ -20,11 +20,10 @@
 
 <template:addResources type="css" resources="businessDirectory.css"/>
 <template:addResources type="css" resources="bootstrap.min.css"/>
-<template:addResources type="javascript" resources="plugins.js"/>
 
 <c:set var="title" value="${currentNode.properties['jcr:title'].string}"/>
 <c:set var="agencies" value="${jcr:getChildrenOfType(currentNode, jcr:getConstraints(currentNode))}"/>
-<h1>${title}</h1>
+<h1 class="section-title">${title}</h1>
 <%-- Agencies display --%>
 <c:if test="${not empty agencies}">
 	<c:forEach items="${agencies}" var="agency" varStatus="status">
