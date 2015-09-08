@@ -33,7 +33,7 @@
 			</c:if>
 			<div class="card-location"><a href="${url.base}${location.path}html"><template:module
 					node="${location}" view="small"/></a></div>
-			<c:set var="employeeSince" value="${currentNode.properties['employeeSince'].date}"/>
+			<c:set var="employeeSince" value="${currentNode.properties['employeeSince'].time}"/>
 			<div class="card-date"><fmt:message key="busdir.label.employeeSince"/>&nbsp;
 				<c:choose>
 					<c:when test="${not empty employeeSince}">
