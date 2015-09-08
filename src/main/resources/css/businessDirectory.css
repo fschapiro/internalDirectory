@@ -627,6 +627,7 @@ footer p{
 
 .level li{
 	display: block!important;
+	margin-top: 5px;
 }
 
 .level a{
@@ -643,14 +644,18 @@ footer p{
 	margin-bottom: 5px;
 }
 
+ul.level {
+	margin-left: 60px;
+}
+
 .panel-title{
 	text-align: left;
 	font-family: Lato;
 	font-weight: normal;
-	font-size: 22px;
+	font-size: 22px !important;
 	display: inline-block;
 	padding: 0 0 0 10px;
-	color: #1aa1e0;
+	color: #1aa1e0 !important;
 	margin: 5px;
 }
 
@@ -680,15 +685,14 @@ footer p{
 	margin: 50px auto;
 }
 
-.accordion-arrow{
+.accordion{
 	display: inline-block;
 }
 
-a.accordion-arrow{
+a.accordion{
 	color: #58585b;
 	text-decoration: none!important;
-	padding-left: 5px;
-	padding-right: 8px;
+	width: 15px;
 }
 
 .accordion-arrow:before {

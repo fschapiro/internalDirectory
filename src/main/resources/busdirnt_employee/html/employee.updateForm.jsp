@@ -20,7 +20,7 @@
 			<a class="but-cancel" href="${url.base}${currentNode.path}.html"><fmt:message
 					key="busdir.label.cancel"/></a>
 
-			<div class="card-header-info">
+			<img class="card-header-info">
 				<button class="change-photo">
 					<div class="camera-bg">
 						<div class="camera">

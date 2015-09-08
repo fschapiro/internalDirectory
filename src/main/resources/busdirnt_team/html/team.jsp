@@ -17,9 +17,10 @@
 <c:set var="children" value="${jcr:getChildrenOfType(currentNode, 'busdirnt:team')}"/>
 <c:set var="employeesChildren" value="${jcr:getChildrenOfType(currentNode, 'busdirnt:employee')}"/>
 <div class="panel-title-group">
-	<c:if test="${not empty children}"><a href="#" class="accordion-arrow collapsed" data-toggle="collapse"
+	<a href="#" class="<c:if test="${not empty children}">accordion-arrow</c:if> accordion collapsed"
+	   data-toggle="collapse"
 	   data-target="#${currentNode.identifier}"
-	   data-parent="#menu"></a></c:if>
+	   data-parent="#menu"></a>
 	<c:set var="numberOfMembers" value="${fn:length(employeesChildren) eq 0 ? 0 : fn:length(employeesChildren)}"/>
 
 	<div class="panel-title"><a href="${url.base}${currentNode.path}.html">${teamName}</a><span
