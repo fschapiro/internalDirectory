@@ -127,12 +127,6 @@
                                 <bootstrap-container jcr:primaryType="jnt:contentList">
                             <main-resource-display j:mainResourceView="updateForm"
                                          jcr:primaryType="jnt:mainResourceDisplay"/>
-                                    <back jcr:primaryType="jnt:backToParentPage">
-                                        <j:translation_fr jcr:language="fr"
-                                             jcr:mixinTypes="mix:title"
-                                             jcr:primaryType="jnt:translation"
-                                             jcr:title="Back"/>
-                                    </back>
                             </bootstrap-container>
                             </bootstrap-container>
                         </pagecontent>

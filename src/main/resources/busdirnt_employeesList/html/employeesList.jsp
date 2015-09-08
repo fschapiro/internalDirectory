@@ -10,6 +10,8 @@
 <%@ taglib prefix="utility" uri="http://www.jahia.org/tags/utilityLib" %>
 <%@ taglib prefix="s" uri="http://www.jahia.org/tags/search" %>
 
+<template:addResources type="css" resources="businessDirectory.css"/>
+<template:addResources type="css" resources="bootstrap.min.css"/>
 <template:addResources type="css" resources="${url.currentModule}/css/jquery.dataTables.css"/>
 
 <jcr:sql var="employeeListData"

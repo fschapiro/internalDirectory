@@ -11,8 +11,9 @@
 <%@ taglib prefix="s" uri="http://www.jahia.org/tags/search" %>
 
 <template:addResources type="css" resources="businessDirectory.css"/>
+<template:addResources type="css" resources="bootstrap.min.css"/>
 
-<c:set var="photo" value="${currentNode.properties['j:picture'].node}"/>
+<c:set var="photo" value="${currentNode.properties['image'].node}"/>
 <c:set var="role" value="${currentNode.properties['role'].string}"/>
 <c:set var="location" value="${currentNode.properties['location'].node}"/>
 
@@ -29,7 +30,7 @@
 			<div class="card-role">${role}</div>
 		</c:if>
 		<c:if test="${not empty location}">
-			<div class="card-location"><fmt:message key="busdirnt_employee.location"/>&nbsp;:&nbsp;<template:module
+			<div class="card-location"><template:module
 					node="${location}" view="small"/></div>
 		</c:if>
 	</div>

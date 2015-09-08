@@ -16,29 +16,31 @@
 <c:set var="teamName" value="${currentNode.properties['jcr:title'].string}"/>
 <c:set var="children" value="${jcr:getChildrenOfType(currentNode, 'busdirnt:team')}"/>
 <c:set var="employeesChildren" value="${jcr:getChildrenOfType(currentNode, 'busdirnt:employee')}"/>
-<div class="panel-title-group">
-	<c:if test="${not empty children}"><a href="#" class="accordion-arrow collapsed" data-toggle="collapse"
-	   data-target="#${currentNode.identifier}"
-	   data-parent="#menu"></a></c:if>
+<li>
+	<c:if test="${not empty children}"><a class="accordion-arrow collapsed" data-toggle="collapse" data-target="#${currentNode.identifier}"
+	   data-parent="#${currentNode.parent.identifier}"></a></c:if>
 	<c:set var="numberOfMembers" value="${fn:length(employeesChildren) eq 0 ? 0 : fn:length(employeesChildren)}"/>
-
-	<div class="panel-title"><a href="${url.base}${currentNode.path}.html">${teamName}</a><span
-			class="card-subtitle"> (${numberOfMembers}&nbsp;
+	<div
+			class="panel-subtitle"><a href="${url.base}${currentNode.path}.html">${teamName}</a><span
+			class="card-subtitle">
+		(${numberOfMembers}&nbsp;
 				<fmt:message key="busdir.label.members"/>)</span></div>
-</div>
 
-<c:set var="children" value="${jcr:getChildrenOfType(currentNode, 'busdirnt:team')}"/>
 
-<c:if test="${not empty children}">
-	<div id="${currentNode.identifier}" class="collapse">
-		<ul class="level">
-			<c:forEach items="${jcr:getChildrenOfType(currentNode, 'busdirnt:team')}" var="subteam">
-				<template:module node="${subteam}" view="hidden.treeNode"/>
-			</c:forEach>
-		</ul>
-	</div>
-</c:if>
 
-<c:if test="${renderContext.editMode}">
-	<template:module path="*"/>
-</c:if>
+
+	<c:if test="${not empty children}">
+		<div id="${currentNode.identifier}" class="collapse">
+			<ul>
+				<c:forEach items="${children}" var="subteam">
+					<template:module node="${subteam}" view="hidden.treeNode"/>
+				</c:forEach>
+			</ul>
+		</div>
+	</c:if>
+
+
+	<c:if test="${renderContext.editMode}">
+		<template:module path="*"/>
+	</c:if>
+</li>

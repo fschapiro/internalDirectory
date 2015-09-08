@@ -10,6 +10,9 @@
 <%@ taglib prefix="utility" uri="http://www.jahia.org/tags/utilityLib" %>
 <%@ taglib prefix="s" uri="http://www.jahia.org/tags/search" %>
 
+<template:addResources type="css" resources="businessDirectory.css"/>
+<template:addResources type="css" resources="bootstrap.min.css"/>
+
 <c:set var="teamName" value="${currentNode.properties['jcr:title'].string}"/>
 
 <c:set var="employees" value="${jcr:getChildrenOfType(currentNode, 'busdirnt:employee')}"/>

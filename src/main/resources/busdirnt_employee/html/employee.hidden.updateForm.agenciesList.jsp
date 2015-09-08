@@ -10,8 +10,19 @@
 <%@ taglib prefix="utility" uri="http://www.jahia.org/tags/utilityLib" %>
 <%@ taglib prefix="s" uri="http://www.jahia.org/tags/search" %>
 
-<template:addResources type="css" resources="businessDirectory.css"/>
-<template:addResources type="css" resources="bootstrap.min.css"/>
-
-<a href="${currentNode.url}">${currentNode.properties['j:firstName'].string}&nbsp;
-${currentNode.properties['j:lastName'].string}</a>
+<jcr:sql var="agencies"
+		 sql="select * from [busdirnt:agency] where isdescendantnode(['${currentNode.resolveSite.path}']) order by [jcr:title] asc"/>
+<c:if test="${not empty agencies}">
+	<div class="form-field">
+		<label for="location"><fmt:message key="busdirnt_agency"/></label>
+		<select id="location" name="location">
+			<c:forEach items="${agencies.nodes}" var="agency">
+				<option value="${agency.identifier}"
+				<c:if
+						test="${currentNode.properties['location'].node.identifier eq agency.identifier}">selected
+				</c:if>>
+						${agency.properties['jcr:title'].string}</option>
+			</c:forEach>
+		</select>
+	</div>
+</c:if>

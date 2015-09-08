@@ -6,7 +6,7 @@
 
 [busdirmix:busdircomponents] > jmix:droppableContent mixin
 
-[busdirnt:agency] > jnt:content, busdirmix:busdircomponents, mix:title, jnt:location
+[busdirnt:agency] > jnt:content, mix:title, jnt:location
  - jcr:title (string) mandatory i18n
  - description (string, richtext) i18n
  - fixPhoneNumber (string)
@@ -18,7 +18,12 @@ orderable
  - jcr:title (string) i18n mandatory
  + * (busdirnt:agency)
 
-[busdirnt:team] > jnt:content, busdirmix:busdircomponents, mix:title
+[busdirnt:teamList] > jnt:content, busdirmix:busdircomponents, mix:title, jmix:list
+orderable
+ - jcr:title (string) i18n mandatory
+ + * (busdirnt:team)
+
+[busdirnt:team] > jnt:content, mix:title
  - jcr:title (string) mandatory
  - manager (weakreference, choicelist[nodes='$currentSite//*;busdirnt:employee']) < 'busdirnt:employee'
  + * (busdirnt:team)
@@ -27,6 +32,7 @@ orderable
 [busdirnt:employee] > jnt:content, mix:title, busdirmix:busdircomponents
  - j:firstName (string) mandatory
  - j:lastName (string) mandatory
+ - employeeSince (date)
  - role (string) i18n
  - description (string, richtext) i18n
  - image (weakreference, picker[type='image'])

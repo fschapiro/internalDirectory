@@ -10,8 +10,22 @@
 <%@ taglib prefix="utility" uri="http://www.jahia.org/tags/utilityLib" %>
 <%@ taglib prefix="s" uri="http://www.jahia.org/tags/search" %>
 
+<template:addResources type="javascript" resources="modernizr-2.8.3-respond-1.4.2.min.js"/>
 <template:addResources type="css" resources="businessDirectory.css"/>
 <template:addResources type="css" resources="bootstrap.min.css"/>
 
-<a href="${currentNode.url}">${currentNode.properties['j:firstName'].string}&nbsp;
-${currentNode.properties['j:lastName'].string}</a>
+<c:set var="title" value="${currentNode.properties['jcr:title'].string}"/>
+<%--<div class="row">--%>
+	<h1 class="section-title">${title}</h1>
+
+	<div class="col-md-10 col-md-offset-1">
+		<div id="menu" class="panel list-group">
+			<c:forEach items="${jcr:getChildrenOfType(currentNode, 'busdirnt:team')}" var="subteam">
+				<template:module node="${subteam}" view="default"/>
+			</c:forEach>
+		</div>
+	</div>
+	<c:if test="${renderContext.editMode}">
+		<template:module path="*"/>
+	</c:if>
+<%--</div>--%>

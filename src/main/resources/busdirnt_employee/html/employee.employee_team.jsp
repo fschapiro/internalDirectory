@@ -10,6 +10,9 @@
 <%@ taglib prefix="utility" uri="http://www.jahia.org/tags/utilityLib" %>
 <%@ taglib prefix="s" uri="http://www.jahia.org/tags/search" %>
 
+<template:addResources type="css" resources="businessDirectory.css"/>
+<template:addResources type="css" resources="bootstrap.min.css"/>
+
 <h5><a href="${currentNode.url}">${currentNode.properties['j:firstName'].string}&nbsp;
 ${currentNode.properties['j:lastName'].string}</a>&nbsp;- <template:module node="${currentNode.parent}"
 																		  view="team_noFormat"/></h5>
