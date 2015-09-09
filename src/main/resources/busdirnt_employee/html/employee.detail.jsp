@@ -18,8 +18,11 @@
 <div class="col-md-3"></div>
 <div class="col-md-6">
 	<div class="profile-card">
+		<c:if test="${(renderContext.loggedIn) and (currentNode.properties['jcr:title'].string eq
+		renderContext.user.username)}">
 		<a class="but-edit" href="${url.base}${currentNode.path}.employee-update.html"><fmt:message
 				key="busdir.label.update"/></a>
+		</c:if>
 
 		<div class="card-header-info">
 			<c:set var="photo" value="${currentNode.properties['image'].node}"/>
