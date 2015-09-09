@@ -59,6 +59,30 @@
 	text-decoration: none;
 }
 
+.but-publish{
+	display: block;
+	position: relative;
+	padding: 5px;
+	height: 28px;
+	width: 150px;
+	background: #e06752;
+	color: white;
+	font-family: helvetica;
+	font-weight: normal;
+	border: 1px solid #e06752;
+	border-radius: 3px;
+	line-height: 17px;
+	font-size: 14px;
+	text-align: center;
+	margin: 30px auto 0;
+}
+
+.but-publish:hover{
+	background: #f06752;
+	color: white;
+	text-decoration: none;
+}
+
 
 .but-cancel{
 	background: transparent;

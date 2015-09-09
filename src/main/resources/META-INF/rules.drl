@@ -13,26 +13,10 @@ global Service service
 global Logger logger
 global JCRContentUtils jcrUtils
 
-rule "Add manager edit rights on team"
+rule "Remove autoPublish mixing after a live update"
 	when
-		// If a manager is set
-		A property manager has been set on a node
-        	- the node has the type busdirnt:team
-	then
-		// This manager has edit rights on this team
-		Log "Give edit rights to manager " + node.getNode().getProperty("manager").getNode().getName()
-		> String userToSet = node.getNode().getProperty("manager").getNode().getName();
-		// Grant role editor on the node to the user userToSet
-		> service.grantRoleToUser(node, userToSet, "editor", drools);
-end
-
-rule "Add employee edit rights on employee"
-	when
-	//if a employee is added
-		A new node is created
+		A node is published
         	- the node has the type busdirnt:employee
 	then
-		/*this employee has edit rights on its content*/
-		Log "give edit rights to" + node.getName()
-		> service.grantRoleToUser(node, node.getName(), "editor", drools);
+		> node.getNode().removeMixin("jmix:autoPublish");
 end

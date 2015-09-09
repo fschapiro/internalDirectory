@@ -20,7 +20,7 @@
 			<a class="but-cancel" href="${url.base}${currentNode.path}.html"><fmt:message
 					key="busdir.label.cancel"/></a>
 
-			<img class="card-header-info">
+			<div class="card-header-info">
 				<button class="change-photo">
 					<div class="camera-bg">
 						<div class="camera">
@@ -34,7 +34,7 @@
 
 			<div class="card-body-info">
 				<template:tokenizedForm>
-				<form action="${url.base}${currentNode.path}" method="post" enctype="multipart/form-data">
+				<form action="${url.basePreview}${currentNode.path}" method="post" enctype="multipart/form-data">
 					<div class="form-field">
 						<label for="j:firstName"><fmt:message key="busdirnt_employee.j_firstName"/></label>
 						<input type="text" id="j:firstName" name="j:firstName"
@@ -81,14 +81,14 @@
 
 					<input type="hidden" name="jcrNodeType" value="busdirnt:employee"/>
 					<input type="hidden" name="jcrRedirectTo"
-						   value="${url.base}${currentNode.path}"/>
+						   value="${url.baseLive}${currentNode.path}"/>
 					<input type="hidden" name="jcrNewNodeOutputFormat" value="html"/>
 					<input type="hidden" name="jcrResourceID" value="${currentNode.identifier}"/>
+					<input type="hidden" name="jcr:mixinTypes" value="jmix:autoPublish"/>
 					<input type="hidden" name="jcrMethodToCall" value="input"/>
 				</form>
 			</div>
 			</template:tokenizedForm>
-
 		</div>
 	</div>
 </div>
