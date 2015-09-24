@@ -59,31 +59,6 @@
 	text-decoration: none;
 }
 
-.but-publish{
-	display: block;
-	position: relative;
-	padding: 5px;
-	height: 28px;
-	width: 150px;
-	background: #e06752;
-	color: white;
-	font-family: helvetica;
-	font-weight: normal;
-	border: 1px solid #e06752;
-	border-radius: 3px;
-	line-height: 17px;
-	font-size: 14px;
-	text-align: center;
-	margin: 30px auto 0;
-}
-
-.but-publish:hover{
-	background: #f06752;
-	color: white;
-	text-decoration: none;
-}
-
-
 .but-cancel{
 	background: transparent;
 	position: absolute;
@@ -363,7 +338,7 @@
 
 
 .form-field input{
-	width: calc(100% - 100px);
+	width: calc(100% - 110px);
 	height: 35px;
 	margin: 6px auto;
 	display: inline-block;
@@ -380,7 +355,7 @@
 }
 
 .form-field textarea{
-	width: calc(100% - 100px);
+	width: calc(100% - 110px);
 	height: 130px;
 	margin: 6px auto;
 	display: inline-block;
@@ -448,154 +423,43 @@
 	margin: 0 auto;
 	padding: 0px;
 	height: auto;
-	width: auto;
-	border: none;
-	border-radius: 50px;
-	background: black;
-}
-
-
-
-.change-photo:hover .camera{
-	border-radius: 25px;
-	left: calc(50% - 10px);
-	top: calc(50% - 10px);
-	position: absolute;
-	z-index: 500;
-	display: block;
-}
-
-.camera{
-	display: none;
-}
-
-.change-photo:hover .camera-bg{
-	background: white;
-	z-index: 499;
-	width: 50px;
-	height: 50px;
-	position: absolute;
-	border-radius: 25px;
-	left: calc(50% - 25px);
-	top: calc(50% - 25px);
-}
-
-.change-photo:hover .card-picture{
-	opacity: 0.5;
-}
-
-
-/*BREADCRUMB*/
-
-nav{
-	width: 100%;
-	margin: 0;
-	height: auto;
-}
-
-.breadcrumb{
-	margin: 0px;
+	width: 100px;
+	height: 100px;
 	background: transparent;
 }
 
-.cd-breadcrumb, .cd-multi-steps {
-	width: 90%;
-	max-width: 768px;
-	padding: 0.5em 1em;
+.change-photo-btn{
+	cursor: pointer;
+	z-index: 600;
+	position: absolute;
+	overflow: hidden;
+	width: 100px;
+	height: 100px;
+	border-radius: 50px;
+	border: none;
+	background: transparent;
 }
 
-.cd-breadcrumb:after, .cd-multi-steps:after {
-	content: "";
-	display: table;
-	clear: both;
+.change-photo-btn:hover{
+	position: absolute;
+	overflow: hidden;
+	width: 100px;
+	height: 100px;
+	border-radius: 50px;
+	border: none;
+	background: url('../img/ic_camera.png') no-repeat right top;
 }
-.cd-breadcrumb li, .cd-multi-steps li {
-	display: inline-block;
-	float: left;
-}
-.cd-breadcrumb li::after, .cd-multi-steps li::after {
-	/* this is the separator between items */
-	display: inline-block;
-	content: '\00bb';
-	color: #959fa5;
-}
-.cd-breadcrumb li:last-of-type::after, .cd-multi-steps li:last-of-type::after {
-	/* hide separator after the last item */
-	display: none;
-}
-.cd-breadcrumb li > *, .cd-multi-steps li > * {
-	/* single step */
-	display: inline-block;
-	font-size: 1.4rem;
-	color: #58585b;
-}
-.cd-breadcrumb li.current > *, .cd-multi-steps li.current > * {
-	/* selected step */
-	color: #00a0e3;
-	font-style: normal;
-	font-weight: 500;
-}
-.no-touch .cd-breadcrumb a:hover, .no-touch .cd-multi-steps a:hover {
-	/* steps already visited */
-	color: #58585b;
-}
-.cd-breadcrumb.custom-separator li::after, .cd-multi-steps.custom-separator li::after {
-	/* replace the default arrow separator with a custom icon */
-	content: '';
-	height: 16px;
-	width: 16px;
-	background: url(../img/disclousure.png) no-repeat center center;
-	vertical-align: middle;
-}
-.cd-breadcrumb.custom-icons li > *::before, .cd-multi-steps.custom-icons li > *::before {
-	/* add a custom icon before each item */
-	content: '';
-	display: inline-block;
-	height: 20px;
-	width: 20px;
-	margin-right: .4em;
-	background: url(../img/disclousure.png) no-repeat 0 0;
-	vertical-align: middle;
-}
-.cd-breadcrumb.custom-icons li:not(.current):nth-of-type(2) > *::before, .cd-multi-steps.custom-icons li:not(.current):nth-of-type(2) > *::before {
-	/* change custom icon using image sprites */
-	background-position: -20px 0;
-}
-.cd-breadcrumb.custom-icons li:not(.current):nth-of-type(3) > *::before, .cd-multi-steps.custom-icons li:not(.current):nth-of-type(3) > *::before {
-	background-position: -40px 0;
-}
-.cd-breadcrumb.custom-icons li:not(.current):nth-of-type(4) > *::before, .cd-multi-steps.custom-icons li:not(.current):nth-of-type(4) > *::before {
-	background-position: -60px 0;
-}
-.cd-breadcrumb.custom-icons li.current:first-of-type > *::before, .cd-multi-steps.custom-icons li.current:first-of-type > *::before {
-	/* change custom icon for the current item */
-	background-position: 0 -20px;
-}
-.cd-breadcrumb.custom-icons li.current:nth-of-type(2) > *::before, .cd-multi-steps.custom-icons li.current:nth-of-type(2) > *::before {
-	background-position: -20px -20px;
-}
-.cd-breadcrumb.custom-icons li.current:nth-of-type(3) > *::before, .cd-multi-steps.custom-icons li.current:nth-of-type(3) > *::before {
-	background-position: -40px -20px;
-}
-.cd-breadcrumb.custom-icons li.current:nth-of-type(4) > *::before, .cd-multi-steps.custom-icons li.current:nth-of-type(4) > *::before {
-	background-position: -60px -20px;
-}
-@media only screen and (min-width: 768px) {
-	.cd-breadcrumb, .cd-multi-steps {
-		padding: 0 1.2em;
-	}
-	.cd-breadcrumb li, .cd-multi-steps li {
-	}
-	.cd-breadcrumb li::after, .cd-multi-steps li::after {
-		margin: 0 1em;
-	}
 
-	ol{
-		margin: 0px;
-	}
-	.cd-breadcrumb li > *, .cd-multi-steps li > * {
-		font-size: 1.6rem;
-	}
+.change-photo-btn input{
+	cursor: pointer;
+	position: absolute;
+	z-index: 500;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	opacity: 0;
+	height: 100px;
 }
 
 

@@ -73,7 +73,7 @@
 					<div class="field">
 						<img src="<c:url value="${url.currentModule}/img/ic_mail.png" />"/>
 
-						<div class="card-field">${email}</div>
+						<div class="card-field"><a href="mailto:${email}">${email}</a></div>
 					</div>
 				</c:if>
 				<c:set var="skypeID" value="${currentNode.properties['skypeID'].string}"/>
